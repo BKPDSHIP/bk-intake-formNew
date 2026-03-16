@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BK Print Shop Intake Invoice</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --line: #d7dbe0;
+      --text: #1e2430;
+      --muted: #667085;
+      --accent: #2f5cff;
+      --accent-soft: #e8efff;
+      --danger: #b42318;
+      --success: #067647;
+      --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+    .toolbar button { border: 0; border-radius: 12px; padding: 12px 16px; font-size: 14px; font-weight: 700; cursor: pointer; }
+    .primary { background: var(--accent); color: #fff; }
+    .secondary { background: var(--accent-soft); color: #1539b8; }
+    .ghost { background: #edf1f5; color: var(--text); }
+    .sheet { background: var(--card); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+    .invoice-head { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; padding: 28px; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%); }
+    .brand h1 { margin: 0; font-size: 30px; letter-spacing: 0.5px; }
+    .brand .sub { margin-top: 6px; color: var(--muted); font-size: 14px; }
+    .brand .invoice-badge { display: inline-block; margin-top: 14px; padding: 8px 12px; border-radius: 999px; background: var(--accent-soft); color: #1539b8; font-size: 12px; font-weight: 700; letter-spacing: 0.4px; }
+    .head-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-self: start; }
+    .info-box { border: 1px solid var(--line); border-radius: 14px; padding: 12px; background: #fff; }
+    .info-box label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+    .info-box input, .info-box select { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 14px; background: #fff; color: var(--text); }
+    .section { padding: 22px 28px; border-bottom: 1px solid var(--line); }
+    .section:last-child { border-bottom: 0; }
+    .section h2 { margin: 0 0 16px; font-size: 18px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .grid-1 { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 13px; font-weight: 700; }
+    .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 14px; background: #fff; color: var(--text); }
+    .field textarea { min-height: 92px; resize: vertical; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .hidden { display: none !important; }
+    .type-card { border: 1px solid var(--line); border-radius: 16px; padding: 18px; background: #fbfcfe; }
+    .items-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .items-head .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .item-card { border: 1px solid var(--line); border-radius: 16px; background: #fff; padding: 16px; margin-bottom: 14px; }
+    .item-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .item-title { font-weight: 700; font-size: 15px; }
+    .link-btn { border: 0; background: transparent; color: #b42318; font-weight: 700; cursor: pointer; padding: 6px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid var(--line); padding: 10px; text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #f8fafc; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; color: var(--muted); }
+    td input { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; font-size: 14px; background: #fff; }
+    td .row-total { font-weight: 700; white-space: nowrap; }
+    .totals-wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: start; }
+    .totals-box { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff; }
+    .totals-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 14px; }
+    .totals-row:last-child { border-bottom: 0; }
+    .totals-row strong { font-size: 16px; }
+    .status { margin-top: 12px; font-size: 13px; font-weight: 700; white-space: pre-line; }
+    .status.error { color: var(--danger); }
+    .status.success { color: var(--success); }
+    pre { margin: 0; border-radius: 14px; padding: 14px; background: #101828; color: #f8fafc; overflow: auto; font-size: 12px; line-height: 1.5; }
+    .print-note { margin-top: 10px; font-size: 12px; color: var(--muted); }
+    @media (max-width: 860px) {
+      .invoice-head, .totals-wrap, .grid, .grid-3 { grid-template-columns: 1fr; }
+      body { padding: 14px; }
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .toolbar, .json-card, .print-note, .link-btn, .items-head .actions, .no-print { display: none !important; }
+      .sheet { border: 0; box-shadow: none; border-radius: 0; }
+      .section, .invoice-head { padding: 18px 20px; }
+      input, select, textarea { border: 0 !important; padding: 0 !important; background: transparent !important; }
+      textarea { min-height: 0 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="toolbar no-print">
+      <button type="button" class="primary" id="btnDownloadJson">Download intake.json</button>
+      <button type="button" class="secondary" id="btnPreviewJson">Preview JSON</button>
+      <button type="button" class="ghost" id="btnPrintInvoice">Print Invoice</button>
+    </div>
+
+    <form id="invoiceForm" class="sheet">
+      <div class="invoice-head">
+        <div class="brand">
+          <h1>Print Shop Intake Invoice</h1>
+          <div class="sub">One design. Multiple items. Built for walk-in orders and printable order records.</div>
+          <div class="invoice-badge">BK KREATION STUDIO WORKFLOW</div>
+        </div>
+
+        <div class="head-grid">
+          <div class="info-box">
+            <label for="invoiceNumber">Invoice / Order ID</label>
+            <input id="invoiceNumber" type="text" placeholder="Example: BK-1001" />
+          </div>
+          <div class="info-box">
+            <label for="invoiceDate">Invoice Date</label>
+            <input id="invoiceDate" type="date" />
+          </div>
+          <div class="info-box">
+            <label for="dueDate">Due Date</label>
+            <input id="dueDate" type="date" />
+          </div>
+          <div class="info-box">
+            <label for="paymentStatus">Payment Status</label>
+            <select id="paymentStatus">
+              <option value="Unpaid">Unpaid</option>
+              <option value="Deposit Paid">Deposit Paid</option>
+              <option value="Paid in Full">Paid in Full</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Customer Information</h2>
+        <div class="grid">
+          <div class="field"><label for="clientName">Client Name</label><input id="clientName" required /></div>
+          <div class="field"><label for="clientPhone">Phone</label><input id="clientPhone" /></div>
+          <div class="field"><label for="clientEmail">Email</label><input id="clientEmail" type="email" /></div>
+          <div class="field"><label for="orderType">Design Type</label>
+            <select id="orderType" required>
+              <option value="">Select one</option>
+              <option value="Memorial">Memorial</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Graduation">Graduation</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Design Information</h2>
+        <div class="grid-1">
+          <div class="field"><label for="designDirectionNotes">Design Direction Notes</label><textarea id="designDirectionNotes" required></textarea></div>
+        </div>
+      </div>
+
+      <div class="section hidden" id="memorialFields">
+        <div class="type-card">
+          <h2>Memorial Details</h2>
+          <div class="grid">
+            <div class="field"><label for="deceasedFirstName">Deceased First Name</label><input id="deceasedFirstName" /></div>
+            <div class="field"><label for="deceasedLastName">Deceased Last Name</label><input id="deceasedLastName" /></div>
+            <div class="field"><label for="dateLabelStyle">Date Label Style</label>
+              <select id="dateLabelStyle">
+                <option value="DOB_DOD">Date of Birth / Date of Death</option>
+                <option value="SUNRISE_SUNSET">Sunrise / Sunset</option>
+                <option value="ALPHA_OMEGA">Alpha / Omega</option>
+                <option value="CUSTOM">Custom Labels</option>
+              </select>
+            </div>
+            <div class="field"><label for="sunriseDate">First Date</label><input id="sunriseDate" type="date" /></div>
+            <div class="field"><label for="sunsetDate">Second Date</label><input id="sunsetDate" type="date" /></div>
+          </div>
+
+          <div class="grid hidden" id="customDateLabelsWrap" style="margin-top: 14px;">
+            <div class="field"><label for="customLabel1">Custom Label 1</label><input id="customLabel1" /></div>
+            <div class="field"><label for="customLabel2">Custom Label 2</label><input id="customLabel2" /></div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field"><label for="memorialThemeColors">Theme / Colors</label><input id="memorialThemeColors" /></div>
+            <div class="field"><label for="memorialQuote">Saying / Quote</label><textarea id="memorialQuote"></textarea></div>
+            <div class="field"><label for="memorialPhotoNotes">Photo Notes</label><textarea id="memorialPhotoNotes"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section hidden" id="birthdayFields">
+        <div class="type-card">
+          <h2>Birthday Details</h2>
+          <div class="grid">
+            <div class="field"><label for="honoreeFirstName">Honoree First Name</label><input id="honoreeFirstName" /></div>
+            <div class="field"><label for="honoreeLastName">Honoree Last Name</label><input id="honoreeLastName" /></div>
+            <div class="field"><label for="ageTurning">Age Turning</label><input id="ageTurning" /></div>
+            <div class="field"><label for="eventDate">Event Date</label><input id="eventDate" type="date" /></div>
+            <div class="field"><label for="eventTime">Event Time</label><input id="eventTime" /></div>
+            <div class="field"><label for="birthdayThemeColors">Theme / Colors</label><input id="birthdayThemeColors" /></div>
+            <div class="field"><label for="venueLocation">Venue / Location</label><input id="venueLocation" /></div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field"><label for="birthdayWording">Wording / Saying</label><textarea id="birthdayWording"></textarea></div>
+            <div class="field"><label for="birthdayPhotoNotes">Photo Notes</label><textarea id="birthdayPhotoNotes"></textarea></div>
+            <div class="field"><label for="outfitDressCode">Outfit / Dress Code</label><input id="outfitDressCode" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section hidden" id="graduationFields">
+        <div class="type-card">
+          <h2>Graduation Details</h2>
+          <div class="grid">
+            <div class="field"><label for="graduateFirstName">Graduate First Name</label><input id="graduateFirstName" /></div>
+            <div class="field"><label for="graduateLastName">Graduate Last Name</label><input id="graduateLastName" /></div>
+            <div class="field"><label for="schoolName">School Name</label><input id="schoolName" /></div>
+            <div class="field"><label for="classYear">Class Year</label><input id="classYear" /></div>
+            <div class="field"><label for="gradColors">Colors</label><input id="gradColors" /></div>
+            <div class="field"><label for="degreeHonor">Degree / Honor</label><input id="degreeHonor" /></div>
+            <div class="field"><label for="mascot">Mascot</label><input id="mascot" /></div>
+            <div class="field"><label for="futureSchoolCareer">Future School / Career</label><input id="futureSchoolCareer" /></div>
+            <div class="field"><label for="jerseyNumber">Jersey Number</label><input id="jerseyNumber" /></div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field"><label for="gradWordingQuote">Wording / Quote</label><textarea id="gradWordingQuote"></textarea></div>
+            <div class="field"><label for="gradPhotoNotes">Photo Notes</label><textarea id="gradPhotoNotes"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="items-head">
+          <div><h2 style="margin: 0;">Order Items</h2><div class="muted">Use this for multiple items and sizes that share the same design.</div></div>
+          <div class="actions no-print"><button type="button" class="secondary" id="btnAddItem">Add Item</button></div>
+        </div>
+        <div id="itemsWrap"></div>
+      </div>
+
+      <div class="section">
+        <h2>Reference Information</h2>
+        <div class="grid">
+          <div class="field"><label for="imageSource">Image Source</label>
+            <select id="imageSource">
+              <option value="Upload">Upload</option>
+              <option value="Google Drive">Google Drive</option>
+              <option value="Dropbox">Dropbox</option>
+              <option value="Text Message">Text Message</option>
+              <option value="Email">Email</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="uploadLink">Upload Link</label><input id="uploadLink" /></div>
+        </div>
+        <div class="grid-1" style="margin-top: 14px;">
+          <div class="field"><label for="referenceNotes">Reference Notes</label><textarea id="referenceNotes"></textarea></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="totals-wrap">
+          <div>
+            <h2 style="margin-top: 0;">Payment Summary</h2>
+            <div class="grid">
+              <div class="field"><label for="taxRate">Tax Rate (%)</label><input id="taxRate" type="number" step="0.01" value="0" /></div>
+              <div class="field"><label for="depositPaid">Deposit Paid</label><input id="depositPaid" type="number" step="0.01" value="0" /></div>
+            </div>
+            <div class="grid-1" style="margin-top: 14px;">
+              <div class="field"><label for="paymentNotes">Payment Notes</label><textarea id="paymentNotes"></textarea></div>
+            </div>
+            <div class="grid-1" style="margin-top: 14px;">
+              <div class="field">
+                <label for="confirmIntake"><input id="confirmIntake" type="checkbox" style="width:auto; margin-right:8px;" />I confirm that the information entered on this invoice is correct.</label>
+                <div class="hint">This box must be checked before the JSON can be downloaded.</div>
+              </div>
+            </div>
+          </div>
+          <div class="totals-box">
+            <div class="totals-row"><span>Subtotal</span><span id="subtotalDisplay">$0.00</span></div>
+            <div class="totals-row"><span>Tax</span><span id="taxDisplay">$0.00</span></div>
+            <div class="totals-row"><span>Total</span><span id="totalDisplay">$0.00</span></div>
+            <div class="totals-row"><span>Deposit Paid</span><span id="depositDisplay">$0.00</span></div>
+            <div class="totals-row"><strong>Balance Due</strong><strong id="balanceDisplay">$0.00</strong></div>
+          </div>
+        </div>
+        <div id="errorBox" class="status error hidden"></div>
+        <div id="copyStatus" class="status hidden"></div>
+        <div class="print-note">Use the Print button to create a clean printable order invoice.</div>
+      </div>
+    </form>
+
+    <div class="card json-card" style="margin-top: 18px;">
+      <h2 class="section-title">JSON Preview</h2>
+      <pre id="jsonPreview">{}</pre>
+    </div>
+  </div>
+
+  <template id="itemTemplate">
+    <div class="item-card">
+      <div class="item-top">
+        <div class="item-title">Item <span class="item-number"></span></div>
+        <button type="button" class="link-btn btnRemoveItem no-print">Remove Item</button>
+      </div>
+      <div class="grid-3">
+        <div class="field"><label>Item Type</label><input class="itemType" placeholder="T-Shirt, Banner, Fan" /></div>
+        <div class="field"><label>Item Name</label><input class="itemName" placeholder="Family Reunion Shirt" /></div>
+        <div class="field"><label>Item Notes</label><input class="itemNotes" placeholder="Front only, same design, glitter vinyl" /></div>
+      </div>
+      <table>
+        <thead><tr><th>Size / Variant</th><th>Qty</th><th>Unit Price</th><th>Line Total</th><th class="no-print">Action</th></tr></thead>
+        <tbody class="sizesBody"></tbody>
+      </table>
+      <div class="actions no-print" style="margin-top: 12px;"><button type="button" class="secondary btnAddSize">Add Size Row</button></div>
+    </div>
+  </template>
+
+  <template id="sizeRowTemplate">
+    <tr>
+      <td><input class="sizeName" placeholder="Adult Medium, 2x4 Banner, Yard Sign" /></td>
+      <td><input class="sizeQty" type="number" min="0" step="1" value="1" /></td>
+      <td><input class="sizePrice" type="number" min="0" step="0.01" value="0" /></td>
+      <td><span class="row-total">$0.00</span></td>
+      <td class="no-print"><button type="button" class="link-btn btnRemoveSize">Remove</button></td>
+    </tr>
+  </template>
+
+  <script>
+    const orderType = document.getElementById('orderType');
+    const memorialFields = document.getElementById('memorialFields');
+    const birthdayFields = document.getElementById('birthdayFields');
+    const graduationFields = document.getElementById('graduationFields');
+    const dateLabelStyle = document.getElementById('dateLabelStyle');
+    const customDateLabelsWrap = document.getElementById('customDateLabelsWrap');
+    const itemsWrap = document.getElementById('itemsWrap');
+    const itemTemplate = document.getElementById('itemTemplate');
+    const sizeRowTemplate = document.getElementById('sizeRowTemplate');
+    const errorBox = document.getElementById('errorBox');
+    const copyStatus = document.getElementById('copyStatus');
+    const jsonPreview = document.getElementById('jsonPreview');
+
+    function money(n) { const num = Number(n || 0); return `$${num.toFixed(2)}`; }
+    function val(id) { const el = document.getElementById(id); return el ? String(el.value || '').trim() : ''; }
+    function numVal(value) { const n = parseFloat(String(value || '').trim()); return Number.isFinite(n) ? n : 0; }
+    function fullName(first, last) { return [String(first || '').trim(), String(last || '').trim()].filter(Boolean).join(' '); }
+    function setHidden(el, hidden) { el.classList.toggle('hidden', hidden); }
+    function setStatus(el, kind, text) { el.className = `status ${kind}`; el.textContent = text; setHidden(el, false); }
+    function clearStatus(el) { el.textContent = ''; el.className = 'status hidden'; }
+    function showTypeFields() {
+      const type = orderType.value;
+      memorialFields.classList.toggle('hidden', type !== 'Memorial');
+      birthdayFields.classList.toggle('hidden', type !== 'Birthday');
+      graduationFields.classList.toggle('hidden', type !== 'Graduation');
+    }
+    function showCustomDateLabels() { customDateLabelsWrap.classList.toggle('hidden', dateLabelStyle.value !== 'CUSTOM'); }
+    function requireFields(errors, pairs) { for (const [value, label] of pairs) { if (!String(value || '').trim()) errors.push(label + ' is required.'); } }
+
+    function addSizeRow(itemCard, sizeName = '', qty = 1, price = 0) {
+      const frag = sizeRowTemplate.content.cloneNode(true);
+      const row = frag.querySelector('tr');
+      row.querySelector('.sizeName').value = sizeName;
+      row.querySelector('.sizeQty').value = qty;
+      row.querySelector('.sizePrice').value = price;
+      row.querySelector('.btnRemoveSize').addEventListener('click', () => { row.remove(); updateTotals(); });
+      row.querySelectorAll('input').forEach(input => input.addEventListener('input', updateTotals));
+      itemCard.querySelector('.sizesBody').appendChild(row);
+      updateTotals();
+    }
+
+    function refreshItemNumbers() {
+      Array.from(itemsWrap.querySelectorAll('.item-card')).forEach((card, idx) => {
+        card.querySelector('.item-number').textContent = idx + 1;
+      });
+    }
+
+    function addItem() {
+      const frag = itemTemplate.content.cloneNode(true);
+      const card = frag.querySelector('.item-card');
+      card.querySelector('.btnRemoveItem').addEventListener('click', () => { card.remove(); refreshItemNumbers(); updateTotals(); });
+      card.querySelector('.btnAddSize').addEventListener('click', () => addSizeRow(card));
+      card.querySelectorAll('input').forEach(input => input.addEventListener('input', updateTotals));
+      itemsWrap.appendChild(card);
+      addSizeRow(card);
+      refreshItemNumbers();
+      updateTotals();
+    }
+
+    function collectItems() {
+      const items = [];
+      Array.from(itemsWrap.querySelectorAll('.item-card')).forEach(card => {
+        const itemType = card.querySelector('.itemType').value.trim();
+        const itemName = card.querySelector('.itemName').value.trim();
+        const itemNotes = card.querySelector('.itemNotes').value.trim();
+        const sizeRows = Array.from(card.querySelectorAll('.sizesBody tr'));
+        const sizes = [];
+        let itemTotal = 0;
+        sizeRows.forEach(row => {
+          const size = row.querySelector('.sizeName').value.trim();
+          const qty = numVal(row.querySelector('.sizeQty').value);
+          const price = numVal(row.querySelector('.sizePrice').value);
+          const total = qty * price;
+          row.querySelector('.row-total').textContent = money(total);
+          if (!size && !qty && !price) return;
+          sizes.push({ size, qty, unitPrice: price, total });
+          itemTotal += total;
+        });
+        if (!itemType && !itemName && sizes.length === 0 && !itemNotes) return;
+        items.push({ itemType, itemName, notes: itemNotes, sizes, itemTotal });
+      });
+      return items;
+    }
+
+    function updateTotals() {
+      const items = collectItems();
+      const subtotal = items.reduce((sum, item) => sum + item.itemTotal, 0);
+      const taxRate = numVal(document.getElementById('taxRate').value);
+      const deposit = numVal(document.getElementById('depositPaid').value);
+      const tax = subtotal * (taxRate / 100);
+      const total = subtotal + tax;
+      const balance = total - deposit;
+      document.getElementById('subtotalDisplay').textContent = money(subtotal);
+      document.getElementById('taxDisplay').textContent = money(tax);
+      document.getElementById('totalDisplay').textContent = money(total);
+      document.getElementById('depositDisplay').textContent = money(deposit);
+      document.getElementById('balanceDisplay').textContent = money(balance);
+    }
+
+    function buildDetails(errors, type) {
+      if (type === 'Memorial') {
+        requireFields(errors, [[val('deceasedFirstName'),'Memorial: Deceased First Name'],[val('deceasedLastName'),'Memorial: Deceased Last Name'],[val('sunriseDate'),'Memorial: First Date'],[val('sunsetDate'),'Memorial: Second Date'],[val('memorialThemeColors'),'Memorial: Theme / Colors'],[val('memorialQuote'),'Memorial: Saying / Quote'],[val('memorialPhotoNotes'),'Memorial: Photo Notes']]);
+        if (val('dateLabelStyle') === 'CUSTOM') requireFields(errors, [[val('customLabel1'),'Memorial: Custom Label 1'],[val('customLabel2'),'Memorial: Custom Label 2']]);
+        return { memorial: { deceasedFirstName: val('deceasedFirstName'), deceasedLastName: val('deceasedLastName'), deceasedName: fullName(val('deceasedFirstName'), val('deceasedLastName')), dateLabelStyle: val('dateLabelStyle') || 'DOB_DOD', sunriseDate: val('sunriseDate'), sunsetDate: val('sunsetDate'), customDateLabels: { label1: val('customLabel1'), label2: val('customLabel2') }, themeColors: val('memorialThemeColors'), quote: val('memorialQuote'), photoNotes: val('memorialPhotoNotes') } };
+      }
+      if (type === 'Birthday') {
+        requireFields(errors, [[val('honoreeFirstName'),'Birthday: Honoree First Name'],[val('honoreeLastName'),'Birthday: Honoree Last Name'],[val('ageTurning'),'Birthday: Age Turning'],[val('eventDate'),'Birthday: Event Date'],[val('birthdayThemeColors'),'Birthday: Theme / Colors'],[val('birthdayWording'),'Birthday: Wording / Saying'],[val('birthdayPhotoNotes'),'Birthday: Photo Notes']]);
+        return { birthday: { honoreeFirstName: val('honoreeFirstName'), honoreeLastName: val('honoreeLastName'), honoreeName: fullName(val('honoreeFirstName'), val('honoreeLastName')), ageTurning: val('ageTurning'), eventDate: val('eventDate'), eventTime: val('eventTime'), themeColors: val('birthdayThemeColors'), wording: val('birthdayWording'), photoNotes: val('birthdayPhotoNotes'), venueLocation: val('venueLocation'), outfitDressCode: val('outfitDressCode') } };
+      }
+      if (type === 'Graduation') {
+        requireFields(errors, [[val('graduateFirstName'),'Graduation: Graduate First Name'],[val('graduateLastName'),'Graduation: Graduate Last Name'],[val('schoolName'),'Graduation: School Name'],[val('classYear'),'Graduation: Class Year'],[val('gradColors'),'Graduation: Colors'],[val('gradWordingQuote'),'Graduation: Wording / Quote']]);
+        return { graduation: { graduateFirstName: val('graduateFirstName'), graduateLastName: val('graduateLastName'), graduateName: fullName(val('graduateFirstName'), val('graduateLastName')), schoolName: val('schoolName'), classYear: val('classYear'), colors: val('gradColors'), wordingQuote: val('gradWordingQuote'), photoNotes: val('gradPhotoNotes'), degreeHonor: val('degreeHonor'), mascot: val('mascot'), futureSchoolCareer: val('futureSchoolCareer'), jerseyNumber: val('jerseyNumber') } };
+      }
+      return {};
+    }
+
+    function buildInvoiceObject() {
+      const type = val('orderType');
+      const errors = [];
+      requireFields(errors, [[val('clientName'),'Client Name'],[type,'Design Type'],[val('dueDate'),'Due Date'],[val('designDirectionNotes'),'Design Direction Notes']]);
+      const items = collectItems();
+      if (items.length === 0) errors.push('At least one order item is required.');
+      const subtotal = items.reduce((sum, item) => sum + item.itemTotal, 0);
+      const taxRate = numVal(val('taxRate'));
+      const tax = subtotal * (taxRate / 100);
+      const total = subtotal + tax;
+      const depositPaid = numVal(val('depositPaid'));
+      const balanceDue = total - depositPaid;
+      const intake = {
+        orderId: val('invoiceNumber'),
+        client: { name: val('clientName'), phone: val('clientPhone'), email: val('clientEmail') },
+        order: { orderType: type, dueDate: val('dueDate'), designDirectionNotes: val('designDirectionNotes') },
+        details: buildDetails(errors, type),
+        references: { imageSource: val('imageSource'), uploadLink: val('uploadLink'), notes: val('referenceNotes') },
+        productionItems: items,
+        invoice: { invoiceNumber: val('invoiceNumber'), invoiceDate: val('invoiceDate'), paymentStatus: val('paymentStatus'), depositPaid, paymentNotes: val('paymentNotes'), subtotal, taxRate, tax, total, balanceDue }
+      };
+      if (!document.getElementById('confirmIntake').checked) errors.push('Please confirm that the information entered on this invoice is correct.');
+      return { intake, errors };
+    }
+
+    function renderPreview() {
+      updateTotals();
+      const { intake, errors } = buildInvoiceObject();
+      jsonPreview.textContent = JSON.stringify(intake, null, 2);
+      if (errors.length) setStatus(errorBox, 'error', errors.join('\\n'));
+      else clearStatus(errorBox);
+      return { intake, errors };
+    }
+
+    function downloadJson() {
+      clearStatus(copyStatus);
+      const { intake, errors } = renderPreview();
+      if (errors.length) return;
+      const namePart = (intake.client.name || 'client').replace(/[^a-z0-9]+/gi, '_');
+      const orderPart = (intake.orderId || intake.order.orderType || 'invoice').replace(/[^a-z0-9]+/gi, '_');
+      const fileName = `${namePart}_${orderPart}_intake_invoice.json`;
+      const blob = new Blob([JSON.stringify(intake, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      setStatus(copyStatus, 'success', 'JSON downloaded successfully.');
+    }
+
+    orderType.addEventListener('change', showTypeFields);
+    dateLabelStyle.addEventListener('change', showCustomDateLabels);
+    document.getElementById('btnAddItem').addEventListener('click', addItem);
+    document.getElementById('btnPreviewJson').addEventListener('click', () => { clearStatus(copyStatus); renderPreview(); });
+    document.getElementById('btnDownloadJson').addEventListener('click', downloadJson);
+    document.getElementById('btnPrintInvoice').addEventListener('click', () => { clearStatus(copyStatus); renderPreview(); window.print(); });
+    document.getElementById('invoiceForm').addEventListener('input', () => { clearStatus(copyStatus); renderPreview(); });
+    document.getElementById('invoiceDate').value = new Date().toISOString().slice(0, 10);
+    addItem();
+    showTypeFields();
+    showCustomDateLabels();
+    renderPreview();
+  </script>
+</body>
+</html>
