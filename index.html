@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BK Print Order Form</title>
+  <title>G2G Print Order Form</title>
   <style>
     :root {
       --bg: #f7f7f9;
@@ -820,11 +820,9 @@
         <input class="sizeName" placeholder="Adult Medium, 24x18 Yard Sign, Round Fan" />
         <select class="sizeDropdown hidden">
           <option value="">Select Size</option>
-          <option value="Infant Newborn">Infant Newborn</option>
           <option value="Infant 6M">Infant 6M</option>
           <option value="Infant 12M">Infant 12M</option>
           <option value="Infant 18M">Infant 18M</option>
-          <option value="Infant 24M">Infant 24M</option>
           <option value="Toddler 2T">Toddler 2T</option>
           <option value="Toddler 3T">Toddler 3T</option>
           <option value="Toddler 4T">Toddler 4T</option>
@@ -852,6 +850,81 @@
   </template>
 
   <script>
+    const SHIRT_PRICE_MAP = {
+      "Full Bleed T-shirt": {
+        "Infant 6M": 25,
+        "Infant 12M": 25,
+        "Infant 18M": 25,
+        "Toddler 2T": 25,
+        "Toddler 3T": 25,
+        "Toddler 4T": 25,
+        "Youth XS": 35,
+        "Youth S": 35,
+        "Youth M": 35,
+        "Youth L": 35,
+        "Youth XL": 35,
+        "Adult S": 50,
+        "Adult M": 50,
+        "Adult L": 50,
+        "Adult XL": 50,
+        "Adult 2X": 55,
+        "Adult 3X": 55,
+        "Adult 4X": 60,
+        "Adult 5X": 60
+      },
+      "Black-Out T-shirt": {
+        "Adult S": 35,
+        "Adult M": 35,
+        "Adult L": 35,
+        "Adult XL": 35,
+        "Adult 2X": 40,
+        "Adult 3X": 40,
+        "Adult 4X": 45
+      },
+      "Center Design Sub": {
+        "Infant 6M": 17,
+        "Infant 12M": 17,
+        "Infant 18M": 17,
+        "Toddler 2T": 17,
+        "Toddler 3T": 17,
+        "Toddler 4T": 17,
+        "Youth XS": 20,
+        "Youth S": 20,
+        "Youth M": 20,
+        "Youth L": 20,
+        "Youth XL": 20,
+        "Adult S": 25,
+        "Adult M": 25,
+        "Adult L": 25,
+        "Adult XL": 25,
+        "Adult 2X": 30,
+        "Adult 3X": 30,
+        "Adult 4X": 35,
+        "Adult 5X": 40
+      },
+      "Center Design Cotton": {
+        "Infant 6M": 17,
+        "Infant 12M": 17,
+        "Infant 18M": 17,
+        "Toddler 2T": 17,
+        "Toddler 3T": 17,
+        "Toddler 4T": 17,
+        "Youth XS": 20,
+        "Youth S": 20,
+        "Youth M": 20,
+        "Youth L": 20,
+        "Youth XL": 20,
+        "Adult S": 25,
+        "Adult M": 25,
+        "Adult L": 25,
+        "Adult XL": 25,
+        "Adult 2X": 30,
+        "Adult 3X": 30,
+        "Adult 4X": 35,
+        "Adult 5X": 40
+      }
+    };
+
     const orderType = document.getElementById('orderType');
     const memorialFields = document.getElementById('memorialFields');
     const birthdayFields = document.getElementById('birthdayFields');
@@ -924,10 +997,39 @@
       ].includes(itemType);
     }
 
+    function getAutoPrice(itemType, size) {
+      if (!itemType || !size) return null;
+      const typePrices = SHIRT_PRICE_MAP[itemType];
+      if (!typePrices) return null;
+      return Object.prototype.hasOwnProperty.call(typePrices, size) ? typePrices[size] : null;
+    }
+
     function getCardFinalItemType(itemCard) {
       const itemTypeSelect = itemCard.querySelector('.itemType').value.trim();
       const customItemType = (itemCard.querySelector('.customItemType')?.value || '').trim();
       return itemTypeSelect === 'Other' ? customItemType : itemTypeSelect;
+    }
+
+    function updateAutoPrices(itemCard) {
+      const itemType = getCardFinalItemType(itemCard);
+
+      itemCard.querySelectorAll('.sizesBody tr').forEach(row => {
+        const textInput = row.querySelector('.sizeName');
+        const dropdown = row.querySelector('.sizeDropdown');
+        const priceInput = row.querySelector('.sizePrice');
+
+        const size = !dropdown.classList.contains('hidden')
+          ? dropdown.value.trim()
+          : textInput.value.trim();
+
+        const autoPrice = getAutoPrice(itemType, size);
+
+        if (autoPrice !== null) {
+          priceInput.value = autoPrice;
+        }
+      });
+
+      updateTotals();
     }
 
     function updateSizeInputMode(itemCard) {
@@ -953,6 +1055,7 @@
         }
       });
 
+      updateAutoPrices(itemCard);
       updateTotals();
     }
 
@@ -975,8 +1078,14 @@
       });
 
       row.querySelectorAll('input, select').forEach(input => {
-        input.addEventListener('input', updateTotals);
-        input.addEventListener('change', updateTotals);
+        input.addEventListener('input', () => {
+          updateAutoPrices(itemCard);
+          updateTotals();
+        });
+        input.addEventListener('change', () => {
+          updateAutoPrices(itemCard);
+          updateTotals();
+        });
       });
 
       itemCard.querySelector('.sizesBody').appendChild(row);
@@ -987,20 +1096,15 @@
     function autoFillShirtSizes(itemCard) {
       const finalType = getCardFinalItemType(itemCard);
 
-      if (!isShirtType(finalType)) {
-        return;
-      }
+      if (!isShirtType(finalType)) return;
 
       const shirtSizes = [
-        "Infant Newborn",
         "Infant 6M",
         "Infant 12M",
         "Infant 18M",
-        "Infant 24M",
         "Toddler 2T",
         "Toddler 3T",
         "Toddler 4T",
-        "Toddler 5T",
         "Youth XS",
         "Youth S",
         "Youth M",
@@ -1107,15 +1211,6 @@
           row.querySelector('.row-total').textContent = money(total);
 
           if (!size && !qty && !price) return;
-          if (qty === 0 && price === 0 && size) {
-            sizes.push({
-              size,
-              qty,
-              unitPrice: price,
-              total
-            });
-            return;
-          }
 
           sizes.push({
             size,
@@ -1372,8 +1467,7 @@
           await navigator.clipboard.writeText(text);
           setStatus(copyStatus, 'success', 'JSON copied to clipboard.');
           return;
-        } catch (err) {
-        }
+        } catch (err) {}
       }
 
       const copied = legacyCopyText(text);
