@@ -115,7 +115,7 @@
             <label for="paymentStatus">Payment Status</label>
             <select id="paymentStatus">
               <option value="Unpaid">Unpaid</option>
-              <option value="Deposit Paid">Deposit Paid</option>
+              <option value="Retainer Paid">Retainer Paid</option>
               <option value="Paid in Full">Paid in Full</option>
             </select>
           </div>
@@ -254,7 +254,7 @@
             <h2 style="margin-top: 0;">Payment Summary</h2>
             <div class="grid">
               <div class="field"><label for="taxRate">Tax Rate (%)</label><input id="taxRate" type="number" step="0.01" value="0" /></div>
-              <div class="field"><label for="depositPaid">Deposit Paid</label><input id="depositPaid" type="number" step="0.01" value="0" /></div>
+              <div class="field"><label for="retainerPaid">Retainer Paid</label><input id="retainerPaid" type="number" step="0.01" value="0" /></div>
             </div>
             <div class="grid-1" style="margin-top: 14px;">
               <div class="field"><label for="paymentNotes">Payment Notes</label><textarea id="paymentNotes"></textarea></div>
@@ -404,7 +404,7 @@
       const items = collectItems();
       const subtotal = items.reduce((sum, item) => sum + item.itemTotal, 0);
       const taxRate = numVal(document.getElementById('taxRate').value);
-      const deposit = numVal(document.getElementById('depositPaid').value);
+      const retainer = numVal(document.getElementById('depositPaid').value);
       const tax = subtotal * (taxRate / 100);
       const total = subtotal + tax;
       const balance = total - deposit;
@@ -442,7 +442,7 @@
       const taxRate = numVal(val('taxRate'));
       const tax = subtotal * (taxRate / 100);
       const total = subtotal + tax;
-      const depositPaid = numVal(val('depositPaid'));
+      const retainerPaid = numVal(val('retainerPaid'));
       const balanceDue = total - depositPaid;
       const intake = {
         orderId: val('invoiceNumber'),
