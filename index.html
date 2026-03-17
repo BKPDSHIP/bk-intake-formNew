@@ -194,17 +194,9 @@
       white-space: pre-line;
     }
 
-    .status.error {
-      color: var(--danger);
-    }
-
-    .status.success {
-      color: var(--success);
-    }
-
-    .status.warning {
-      color: var(--warning);
-    }
+    .status.error { color: var(--danger); }
+    .status.success { color: var(--success); }
+    .status.warning { color: var(--warning); }
 
     pre {
       margin: 0;
@@ -232,6 +224,8 @@
       padding: 16px;
       margin-bottom: 14px;
       background: #fcfcfd;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .item-top {
@@ -250,6 +244,7 @@
 
     table {
       width: 100%;
+      min-width: 720px;
       border-collapse: collapse;
       margin-top: 10px;
       table-layout: fixed;
@@ -342,6 +337,18 @@
       font-size: 16px;
     }
 
+    .confirm-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .confirm-label input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+    }
+
     @media (max-width: 760px) {
       .grid, .grid-3, .grid-4 {
         grid-template-columns: 1fr;
@@ -366,30 +373,6 @@
       .sizeDropdown,
       .sizeName {
         min-width: 100%;
-      }
-
-      table, thead, tbody, tr, td, th {
-        display: block;
-      }
-
-      thead {
-        display: none;
-      }
-
-      tr {
-        margin-bottom: 10px;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        overflow: hidden;
-      }
-
-      td {
-        border: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      td:last-child {
-        border-bottom: 0;
       }
     }
 
@@ -534,11 +517,11 @@
             </select>
           </div>
           <div class="field">
-            <label for="sunriseDate">First Date</label>
+            <label for="sunriseDate" id="dateFieldLabel1">Date of Birth</label>
             <input id="sunriseDate" name="sunriseDate" type="date" />
           </div>
           <div class="field">
-            <label for="sunsetDate">Second Date</label>
+            <label for="sunsetDate" id="dateFieldLabel2">Date of Death</label>
             <input id="sunsetDate" name="sunsetDate" type="date" />
           </div>
         </div>
@@ -729,6 +712,19 @@
           <div class="field">
             <label for="referenceNotes">Reference Notes</label>
             <textarea id="referenceNotes" name="referenceNotes" placeholder="Examples: use sample 2 for layout, photo 4 is the main photo, keep same wording style as flyer example..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Confirmation</h2>
+        <div class="grid-1">
+          <div class="field">
+            <label for="confirmIntake" class="confirm-label">
+              <input id="confirmIntake" name="confirmIntake" type="checkbox" />
+              <span>I confirm that the information entered on this form is correct.</span>
+            </label>
+            <div class="hint">This box must be checked before the form can be completed.</div>
           </div>
         </div>
       </div>
@@ -964,6 +960,28 @@
       customDateLabelsWrap.classList.toggle('hidden', dateLabelStyle.value !== 'CUSTOM');
     }
 
+    function updateMemorialDateLabels() {
+      const style = document.getElementById('dateLabelStyle').value;
+      const label1 = document.getElementById('dateFieldLabel1');
+      const label2 = document.getElementById('dateFieldLabel2');
+      const custom1 = document.getElementById('customLabel1').value.trim();
+      const custom2 = document.getElementById('customLabel2').value.trim();
+
+      if (style === 'DOB_DOD') {
+        label1.textContent = 'Date of Birth';
+        label2.textContent = 'Date of Death';
+      } else if (style === 'SUNRISE_SUNSET') {
+        label1.textContent = 'Sunrise';
+        label2.textContent = 'Sunset';
+      } else if (style === 'ALPHA_OMEGA') {
+        label1.textContent = 'Alpha';
+        label2.textContent = 'Omega';
+      } else if (style === 'CUSTOM') {
+        label1.textContent = custom1 || 'Custom Date 1';
+        label2.textContent = custom2 || 'Custom Date 2';
+      }
+    }
+
     function val(id) {
       const el = document.getElementById(id);
       return el ? String(el.value || '').trim() : '';
@@ -1095,7 +1113,6 @@
 
     function autoFillShirtSizes(itemCard) {
       const finalType = getCardFinalItemType(itemCard);
-
       if (!isShirtType(finalType)) return;
 
       const shirtSizes = [
@@ -1122,7 +1139,7 @@
       ];
 
       const body = itemCard.querySelector('.sizesBody');
-      body.innerHTML = "";
+      body.innerHTML = '';
 
       shirtSizes.forEach(size => {
         addSizeRow(itemCard, size, 0, 0);
@@ -1394,6 +1411,10 @@
         };
       }
 
+      if (!document.getElementById('confirmIntake')?.checked) {
+        errors.push('Please confirm that the information entered on the form is correct.');
+      }
+
       return { intake, errors };
     }
 
@@ -1401,7 +1422,7 @@
       const { intake, errors } = buildIntakeObject();
       jsonPreview.textContent = JSON.stringify(intake, null, 2);
       if (errors.length) {
-        setStatus(errorBox, 'error', errors.join('\n'));
+        setStatus(errorBox, 'error', errors.join('\\n'));
       } else {
         clearStatus(errorBox);
       }
@@ -1480,7 +1501,15 @@
     }
 
     orderType.addEventListener('change', showTypeFields);
-    dateLabelStyle.addEventListener('change', showCustomDateLabels);
+
+    dateLabelStyle.addEventListener('change', () => {
+      showCustomDateLabels();
+      updateMemorialDateLabels();
+    });
+
+    document.getElementById('customLabel1').addEventListener('input', updateMemorialDateLabels);
+    document.getElementById('customLabel2').addEventListener('input', updateMemorialDateLabels);
+
     document.getElementById('btnAddItem').addEventListener('click', addItem);
 
     document.getElementById('btnPreview').addEventListener('click', () => {
@@ -1516,6 +1545,7 @@
 
     showTypeFields();
     showCustomDateLabels();
+    updateMemorialDateLabels();
     addItem();
     renderPreview();
   </script>
