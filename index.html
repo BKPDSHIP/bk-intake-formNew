@@ -256,6 +256,12 @@
       font-weight: 700;
     }
 
+    .invoice-payment-print-line {
+      display: none;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
     table {
       width: 100%;
       min-width: 720px;
@@ -668,6 +674,17 @@
       .item-print-meta {
         display: block !important;
         margin: 0 0 6px;
+        font-size: 11px !important;
+        line-height: 1.25 !important;
+      }
+
+      #invoicePrintSection > .card > .grid-3 {
+        display: none !important;
+      }
+
+      .invoice-payment-print-line {
+        display: block !important;
+        margin-top: 8px;
         font-size: 11px !important;
         line-height: 1.25 !important;
       }
@@ -1099,6 +1116,8 @@
             </div>
           </div>
 
+          <div class="invoice-payment-print-line print-only" id="invoicePaymentPrintLine"></div>
+
           <div class="invoice-signoff">
             <div class="sign-row">
               <span>Customer Signature: ______________________________</span>
@@ -1383,6 +1402,17 @@
       if (orderIdEl) orderIdEl.textContent = orderId;
       if (clientNameEl) clientNameEl.textContent = clientName;
       if (clientPhoneEl) clientPhoneEl.textContent = clientPhone;
+
+      updatePaymentPrintLine();
+    }
+
+    function updatePaymentPrintLine() {
+      const taxRate = document.getElementById('taxRate')?.value || '0';
+      const paymentType = document.getElementById('paymentType')?.value || '—';
+      const retainerPaid = document.getElementById('retainerPaid')?.value || '0';
+      const line = document.getElementById('invoicePaymentPrintLine');
+      if (!line) return;
+      line.innerHTML = `<strong>Tax Rate (%):</strong> ${taxRate} | <strong>Payment Type:</strong> ${paymentType} | <strong>Retainer/Payment Amount:</strong> ${retainerPaid}`;
     }
 
     function val(id) {
