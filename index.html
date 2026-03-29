@@ -151,6 +151,10 @@
       display: none !important;
     }
 
+    .print-only {
+      display: none;
+    }
+
     .actions {
       display: flex;
       gap: 12px;
@@ -239,6 +243,16 @@
 
     .item-title {
       font-size: 15px;
+      font-weight: 700;
+    }
+
+    .item-print-meta {
+      display: none;
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+
+    .item-print-meta strong {
       font-weight: 700;
     }
 
@@ -349,6 +363,45 @@
       margin-top: 3px;
     }
 
+    .invoice-print-header {
+      display: none;
+    }
+
+    .invoice-header-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .invoice-brand {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .invoice-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .invoice-meta {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .invoice-signoff {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .sign-row {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
     @media (max-width: 760px) {
       .grid, .grid-3, .grid-4 {
         grid-template-columns: 1fr;
@@ -377,41 +430,326 @@
     }
 
     @media print {
+      @page {
+        size: Letter portrait;
+        margin: 0.35in;
+      }
+
+      html,
+      body {
+        width: auto;
+        height: auto;
+      }
+
       body {
         background: #fff;
         padding: 0;
+        font-size: 10.5px;
+        line-height: 1.2;
+        color: #000;
+      }
+
+      .wrap {
+        max-width: none;
+      }
+
+      #jobPrintSection,
+      #invoicePrintSection,
+      #jobPrintSection *,
+      #invoicePrintSection * {
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+        text-shadow: none !important;
+        box-shadow: none !important;
       }
 
       .no-print,
       #jsonPreviewCard,
-      .sticky-actions {
+      .sticky-actions,
+      #errorBox,
+      #copyStatus,
+      form > .card:last-of-type,
+      .btnRemoveItem {
         display: none !important;
       }
 
-      .card {
-        border: 1px solid #ccc;
-        page-break-inside: avoid;
+      .g2g-header {
+        margin-bottom: 6px;
+        padding: 8px 10px;
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        border-radius: 0;
       }
 
-      .g2g-header {
-        background: #ffffff !important;
-        color: #000000 !important;
-        border: 1px solid #ccc;
+      .g2g-brand {
+        font-size: 20px;
+        margin-bottom: 2px;
       }
 
       .g2g-tagline,
       .g2g-form-title {
-        color: #000000 !important;
+        color: #000 !important;
       }
 
-      input, select, textarea {
+      .g2g-tagline {
+        font-size: 10px;
+        margin-bottom: 3px;
+      }
+
+      .g2g-form-title {
+        font-size: 12px;
+      }
+
+      .card {
         border: 0 !important;
+        page-break-inside: auto;
+        break-inside: auto;
+        margin-bottom: 6px;
+        padding: 8px 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .section-title {
+        font-size: 13px;
+        margin: 0 0 6px;
+      }
+
+      .grid,
+      .grid-1,
+      .grid-3,
+      .grid-4 {
+        gap: 8px;
+      }
+
+      #jobPrintSection > .card:first-child .grid,
+      #jobPrintSection > .card:nth-child(2) .grid,
+      #memorialFields .grid,
+      #birthdayFields .grid,
+      #graduationFields .grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .field {
+        gap: 2px;
+      }
+
+      label {
+        font-size: 10px;
+      }
+
+      .hint,
+      .invoice-sub,
+      .invoice-meta,
+      th {
+        font-size: 9px;
+        color: #000 !important;
+      }
+
+      input,
+      select,
+      textarea {
+        color: #000 !important;
+        box-shadow: none !important;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+
+      input,
+      select {
+        min-height: auto;
+        height: auto;
+        border: 0 !important;
+        border-bottom: 0 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
         padding: 0 !important;
+      }
+
+      textarea {
+        min-height: auto !important;
+        height: auto;
+        border: 0 !important;
+        border-bottom: 0 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        padding: 0 !important;
+        resize: none;
+        overflow: hidden;
+      }
+
+      #designDirectionNotes,
+      #memorialQuote,
+      #memorialPhotoNotes,
+      #birthdayWording,
+      #birthdayPhotoNotes,
+      #gradWordingQuote,
+      #gradPhotoNotes,
+      #referenceNotes {
+        min-height: auto !important;
+        height: auto !important;
+      }
+
+      .confirm-label {
+        gap: 6px;
+        align-items: center;
+      }
+
+      .confirm-label input[type="checkbox"] {
+        width: 12px !important;
+        height: 12px !important;
+        min-height: 12px !important;
+        margin-top: 0;
+        padding: 0 !important;
+        border: 1px solid #000 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        appearance: auto !important;
+        -webkit-appearance: checkbox !important;
+        accent-color: #000 !important;
+        display: inline-block !important;
+      }
+
+      .print-only {
+        display: block !important;
+      }
+
+      #invoicePrintSection {
+        page-break-before: always;
+        break-before: page;
+        margin-top: 0;
+      }
+
+      .invoice-print-header {
+        display: block !important;
+      }
+
+      .invoice-header-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .invoice-brand {
+        font-size: 18px;
+      }
+
+      #invoicePrintSection,
+      #invoicePrintSection * {
+        font-size: 11px !important;
+        line-height: 1.25 !important;
+      }
+
+      #invoicePrintSection .invoice-brand {
+        font-size: 18px !important;
+        font-weight: 800 !important;
+      }
+
+      .items-head {
+        margin-bottom: 8px;
+      }
+
+      .item-card {
+        padding: 10px 0;
+        margin-bottom: 8px;
+        border-radius: 0;
+        overflow: visible !important;
+        border: 0 !important;
+      }
+
+      .item-top {
+        margin-bottom: 3px;
+      }
+
+      .item-card > .grid-4 {
+        display: none !important;
+      }
+
+      .item-print-meta {
+        display: block !important;
+        margin: 0 0 6px;
+        font-size: 11px !important;
+        line-height: 1.25 !important;
+      }
+
+      table {
+        width: 100%;
+        min-width: 0 !important;
+        table-layout: fixed;
+        margin-top: 6px;
+      }
+
+      th,
+      td {
+        font-size: 10px;
+        padding: 4px 5px;
+        border-color: #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+      }
+
+      th {
+        text-transform: uppercase;
+        background: #fff !important;
+        color: #000 !important;
+      }
+
+      td input,
+      td select {
+        min-height: auto;
+        height: auto;
+        padding: 0 !important;
+        border: 0 !important;
+        border-bottom: 0 !important;
         background: transparent !important;
       }
 
-      button {
-        display: none !important;
+      .sizeDropdown,
+      .sizeName {
+        min-width: 0;
+        font-size: 10px;
+      }
+
+      .totals-box {
+        margin-top: 8px;
+        border-radius: 0;
+        border: 0 !important;
+      }
+
+      .totals-row {
+        padding: 5px 7px;
+        font-size: 10px;
+        background: #fff !important;
+        border: 0 !important;
+      }
+
+      .totals-row:first-child {
+        border: 0 !important;
+      }
+
+      .totals-row strong {
+        font-size: 11px !important;
+      }
+
+      .invoice-signoff {
+        margin-top: 10px;
+        padding-top: 8px;
+        border-top: 0 !important;
+      }
+
+      .sign-row {
+        margin-top: 8px;
+        font-size: 11px;
+      }
+
+      .field input,
+      .field select,
+      .field textarea,
+      .sizesBody input,
+      .sizesBody select {
+        outline: 0 !important;
+        box-shadow: none !important;
+        text-decoration: none !important;
       }
     }
   </style>
@@ -437,294 +775,340 @@
     </div>
 
     <form id="intakeForm">
-      <div class="card">
-        <h2 class="section-title">Client Information</h2>
-        <div class="grid">
-          <div class="field">
-            <label for="clientName">Client Name</label>
-            <input id="clientName" name="clientName" required />
+      <div id="jobPrintSection">
+        <div class="card">
+          <h2 class="section-title">Client Information</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="clientName">Client Name</label>
+              <input id="clientName" name="clientName" required />
+            </div>
+            <div class="field">
+              <label for="orderId">Order ID</label>
+              <input id="orderId" name="orderId" placeholder="Example: G2G-1001" />
+            </div>
+            <div class="field">
+              <label for="clientPhone">Phone</label>
+              <input id="clientPhone" name="clientPhone" />
+            </div>
+            <div class="field">
+              <label for="clientEmail">Email</label>
+              <input id="clientEmail" name="clientEmail" type="email" />
+            </div>
           </div>
-          <div class="field">
-            <label for="orderId">Order ID</label>
-            <input id="orderId" name="orderId" placeholder="Example: G2G-1001" />
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Order Information</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="orderType">Order Type</label>
+              <select id="orderType" name="orderType" required>
+                <option value="">Select one</option>
+                <option value="Memorial">Memorial</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Graduation">Graduation</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="dueDate">Due Date</label>
+              <input id="dueDate" name="dueDate" type="date" required />
+            </div>
+            <div class="field">
+              <label for="groupOrder">Is this a Group Order?</label>
+              <select id="groupOrder" name="groupOrder">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="invoiceDate">Invoice Date</label>
+              <input id="invoiceDate" name="invoiceDate" type="date" />
+            </div>
           </div>
-          <div class="field">
-            <label for="clientPhone">Phone</label>
-            <input id="clientPhone" name="clientPhone" />
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="designDirectionNotes">Design Direction Notes</label>
+              <textarea id="designDirectionNotes" name="designDirectionNotes" required placeholder="Colors, style, mood, wording direction, layout ideas, must-have details..."></textarea>
+            </div>
           </div>
-          <div class="field">
-            <label for="clientEmail">Email</label>
-            <input id="clientEmail" name="clientEmail" type="email" />
+        </div>
+
+        <div class="card hidden" id="memorialFields">
+          <h2 class="section-title">Memorial Details</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="deceasedFirstName">Deceased First Name</label>
+              <input id="deceasedFirstName" name="deceasedFirstName" />
+            </div>
+            <div class="field">
+              <label for="deceasedLastName">Deceased Last Name</label>
+              <input id="deceasedLastName" name="deceasedLastName" />
+            </div>
+            <div class="field">
+              <label for="dateLabelStyle">Date Label Style</label>
+              <select id="dateLabelStyle" name="dateLabelStyle">
+                <option value="DOB_DOD">Date of Birth / Date of Death</option>
+                <option value="SUNRISE_SUNSET">Sunrise / Sunset</option>
+                <option value="ALPHA_OMEGA">Alpha / Omega</option>
+                <option value="CUSTOM">Custom Labels</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sunriseDate" id="dateFieldLabel1">Date of Birth</label>
+              <input id="sunriseDate" name="sunriseDate" type="date" />
+            </div>
+            <div class="field">
+              <label for="sunsetDate" id="dateFieldLabel2">Date of Death</label>
+              <input id="sunsetDate" name="sunsetDate" type="date" />
+            </div>
+          </div>
+
+          <div class="grid hidden" id="customDateLabelsWrap" style="margin-top: 14px;">
+            <div class="field">
+              <label for="customLabel1">Custom Label 1</label>
+              <input id="customLabel1" name="customLabel1" placeholder="Example: Born" />
+            </div>
+            <div class="field">
+              <label for="customLabel2">Custom Label 2</label>
+              <input id="customLabel2" name="customLabel2" placeholder="Example: Entered Rest" />
+            </div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="memorialThemeColors">Theme / Colors</label>
+              <input id="memorialThemeColors" name="memorialThemeColors" />
+            </div>
+            <div class="field">
+              <label for="memorialQuote">Saying / Quote</label>
+              <textarea id="memorialQuote" name="memorialQuote"></textarea>
+            </div>
+            <div class="field">
+              <label for="memorialPhotoNotes">Photo Notes</label>
+              <textarea id="memorialPhotoNotes" name="memorialPhotoNotes" placeholder="Which photo is main, which photo should be used smaller, which ones need cleanup..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card hidden" id="birthdayFields">
+          <h2 class="section-title">Birthday Details</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="honoreeFirstName">Honoree First Name</label>
+              <input id="honoreeFirstName" name="honoreeFirstName" />
+            </div>
+            <div class="field">
+              <label for="honoreeLastName">Honoree Last Name</label>
+              <input id="honoreeLastName" name="honoreeLastName" />
+            </div>
+            <div class="field">
+              <label for="ageTurning">Age Turning</label>
+              <input id="ageTurning" name="ageTurning" />
+            </div>
+            <div class="field">
+              <label for="eventDate">Event Date</label>
+              <input id="eventDate" name="eventDate" type="date" />
+            </div>
+            <div class="field">
+              <label for="eventTime">Event Time</label>
+              <input id="eventTime" name="eventTime" placeholder="Example: 4:00 PM" />
+            </div>
+            <div class="field">
+              <label for="birthdayThemeColors">Theme / Colors</label>
+              <input id="birthdayThemeColors" name="birthdayThemeColors" />
+            </div>
+            <div class="field">
+              <label for="venueLocation">Venue / Location</label>
+              <input id="venueLocation" name="venueLocation" />
+            </div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="birthdayWording">Wording / Saying</label>
+              <textarea id="birthdayWording" name="birthdayWording"></textarea>
+            </div>
+            <div class="field">
+              <label for="birthdayPhotoNotes">Photo Notes</label>
+              <textarea id="birthdayPhotoNotes" name="birthdayPhotoNotes"></textarea>
+            </div>
+            <div class="field">
+              <label for="outfitDressCode">Outfit / Dress Code</label>
+              <input id="outfitDressCode" name="outfitDressCode" />
+            </div>
+          </div>
+        </div>
+
+        <div class="card hidden" id="graduationFields">
+          <h2 class="section-title">Graduation Details</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="graduateFirstName">Graduate First Name</label>
+              <input id="graduateFirstName" name="graduateFirstName" />
+            </div>
+            <div class="field">
+              <label for="graduateLastName">Graduate Last Name</label>
+              <input id="graduateLastName" name="graduateLastName" />
+            </div>
+            <div class="field">
+              <label for="schoolName">School Name</label>
+              <input id="schoolName" name="schoolName" />
+            </div>
+            <div class="field">
+              <label for="classYear">Class Year</label>
+              <input id="classYear" name="classYear" />
+            </div>
+            <div class="field">
+              <label for="gradColors">Colors</label>
+              <input id="gradColors" name="gradColors" />
+            </div>
+            <div class="field">
+              <label for="degreeHonor">Degree / Honor</label>
+              <input id="degreeHonor" name="degreeHonor" />
+            </div>
+            <div class="field">
+              <label for="mascot">Mascot</label>
+              <input id="mascot" name="mascot" />
+            </div>
+            <div class="field">
+              <label for="futureSchoolCareer">Future School / Career</label>
+              <input id="futureSchoolCareer" name="futureSchoolCareer" />
+            </div>
+            <div class="field">
+              <label for="jerseyNumber">Jersey Number</label>
+              <input id="jerseyNumber" name="jerseyNumber" />
+            </div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="gradWordingQuote">Wording / Quote</label>
+              <textarea id="gradWordingQuote" name="gradWordingQuote"></textarea>
+            </div>
+            <div class="field">
+              <label for="gradPhotoNotes">Photo Notes</label>
+              <textarea id="gradPhotoNotes" name="gradPhotoNotes"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Reference Information</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="imageSource">Image Source</label>
+              <select id="imageSource" name="imageSource">
+                <option value="Upload">Upload</option>
+                <option value="Google Drive">Google Drive</option>
+                <option value="Dropbox">Dropbox</option>
+                <option value="Text Message">Text Message</option>
+                <option value="Email">Email</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="uploadLink">Upload Link</label>
+              <input id="uploadLink" name="uploadLink" placeholder="Paste Dropbox, Google Drive, WeTransfer, or other file link" />
+            </div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="referenceNotes">Reference Notes</label>
+              <textarea id="referenceNotes" name="referenceNotes" placeholder="Examples: use sample 2 for layout, photo 4 is the main photo, keep same wording style as flyer example..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Confirmation</h2>
+          <div class="grid-1">
+            <div class="field">
+              <label for="confirmIntake" class="confirm-label">
+                <input id="confirmIntake" name="confirmIntake" type="checkbox" />
+                <span>I confirm that the information entered on this form is correct.</span>
+              </label>
+              <div class="hint">This box must be checked before the form can be completed.</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="card">
-        <h2 class="section-title">Order Information</h2>
-        <div class="grid">
-          <div class="field">
-            <label for="orderType">Order Type</label>
-            <select id="orderType" name="orderType" required>
-              <option value="">Select one</option>
-              <option value="Memorial">Memorial</option>
-              <option value="Birthday">Birthday</option>
-              <option value="Graduation">Graduation</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="dueDate">Due Date</label>
-            <input id="dueDate" name="dueDate" type="date" required />
-          </div>
-          <div class="field">
-            <label for="groupOrder">Is this a Group Order?</label>
-            <select id="groupOrder" name="groupOrder">
-              <option value="No">No</option>
-              <option value="Yes">Yes</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="invoiceDate">Invoice Date</label>
-            <input id="invoiceDate" name="invoiceDate" type="date" />
+      <div id="invoicePrintSection">
+        <div class="card invoice-print-header" id="invoiceHeaderPrint">
+          <div class="invoice-header-grid">
+            <div>
+              <div class="invoice-brand">G2G Print Shop</div>
+              <div class="invoice-sub">Custom Apparel &amp; Printing</div>
+              <div class="invoice-sub">Phone: __________________</div>
+              <div class="invoice-sub">Email: __________________</div>
+            </div>
+
+            <div class="invoice-meta">
+              <div><strong>Invoice Date:</strong> <span id="printInvoiceDate"></span></div>
+              <div><strong>Order ID:</strong> <span id="printOrderId"></span></div>
+              <div><strong>Client:</strong> <span id="printClientName"></span></div>
+              <div><strong>Phone:</strong> <span id="printClientPhone"></span></div>
+            </div>
           </div>
         </div>
 
-        <div class="grid-1" style="margin-top: 14px;">
-          <div class="field">
-            <label for="designDirectionNotes">Design Direction Notes</label>
-            <textarea id="designDirectionNotes" name="designDirectionNotes" required placeholder="Colors, style, mood, wording direction, layout ideas, must-have details..."></textarea>
+        <div class="card">
+          <div class="items-head">
+            <div>
+              <h2 class="section-title" style="margin-bottom: 4px;">Invoice Items</h2>
+              <div class="hint">One design. Add all items, sizes, quantities, and prices below.</div>
+            </div>
+            <div class="no-print actions" style="margin-top:0;">
+              <button type="button" class="secondary" id="btnAddItem">Add Item</button>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="card hidden" id="memorialFields">
-        <h2 class="section-title">Memorial Details</h2>
-        <div class="grid">
-          <div class="field">
-            <label for="deceasedFirstName">Deceased First Name</label>
-            <input id="deceasedFirstName" name="deceasedFirstName" />
-          </div>
-          <div class="field">
-            <label for="deceasedLastName">Deceased Last Name</label>
-            <input id="deceasedLastName" name="deceasedLastName" />
-          </div>
-          <div class="field">
-            <label for="dateLabelStyle">Date Label Style</label>
-            <select id="dateLabelStyle" name="dateLabelStyle">
-              <option value="DOB_DOD">Date of Birth / Date of Death</option>
-              <option value="SUNRISE_SUNSET">Sunrise / Sunset</option>
-              <option value="ALPHA_OMEGA">Alpha / Omega</option>
-              <option value="CUSTOM">Custom Labels</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="sunriseDate" id="dateFieldLabel1">Date of Birth</label>
-            <input id="sunriseDate" name="sunriseDate" type="date" />
-          </div>
-          <div class="field">
-            <label for="sunsetDate" id="dateFieldLabel2">Date of Death</label>
-            <input id="sunsetDate" name="sunsetDate" type="date" />
-          </div>
-        </div>
+          <div id="itemsWrap"></div>
 
-        <div class="grid hidden" id="customDateLabelsWrap" style="margin-top: 14px;">
-          <div class="field">
-            <label for="customLabel1">Custom Label 1</label>
-            <input id="customLabel1" name="customLabel1" placeholder="Example: Born" />
+          <div class="totals-box">
+            <div class="totals-row"><span>Subtotal</span><span id="subtotalDisplay">$0.00</span></div>
+            <div class="totals-row"><span>Tax</span><span id="taxDisplay">$0.00</span></div>
+            <div class="totals-row"><span>Total</span><span id="totalDisplay">$0.00</span></div>
+            <div class="totals-row"><span>Retainer/Payment Amount</span><span id="retainerDisplay">$0.00</span></div>
+            <div class="totals-row"><strong>Balance Due</strong><strong id="balanceDisplay">$0.00</strong></div>
           </div>
-          <div class="field">
-            <label for="customLabel2">Custom Label 2</label>
-            <input id="customLabel2" name="customLabel2" placeholder="Example: Entered Rest" />
-          </div>
-        </div>
 
-        <div class="grid-1" style="margin-top: 14px;">
-          <div class="field">
-            <label for="memorialThemeColors">Theme / Colors</label>
-            <input id="memorialThemeColors" name="memorialThemeColors" />
+          <div class="grid-3" style="margin-top: 14px;">
+            <div class="field">
+              <label for="taxRate">Tax Rate (%)</label>
+              <input id="taxRate" name="taxRate" type="number" step="0.01" value="0" />
+            </div>
+            <div class="field">
+              <label for="paymentType">Payment Type</label>
+              <select id="paymentType" name="paymentType">
+                <option value="">Select Payment Type</option>
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+                <option value="Cash App">Cash App</option>
+                <option value="Zelle">Zelle</option>
+                <option value="Apple Pay">Apple Pay</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="retainerPaid">Retainer/Payment Amount</label>
+              <input id="retainerPaid" name="retainerPaid" type="number" step="0.01" value="0" />
+            </div>
           </div>
-          <div class="field">
-            <label for="memorialQuote">Saying / Quote</label>
-            <textarea id="memorialQuote" name="memorialQuote"></textarea>
-          </div>
-          <div class="field">
-            <label for="memorialPhotoNotes">Photo Notes</label>
-            <textarea id="memorialPhotoNotes" name="memorialPhotoNotes" placeholder="Which photo is main, which photo should be used smaller, which ones need cleanup..."></textarea>
-          </div>
-        </div>
-      </div>
 
-      <div class="card hidden" id="birthdayFields">
-        <h2 class="section-title">Birthday Details</h2>
-        <div class="grid">
-          <div class="field">
-            <label for="honoreeFirstName">Honoree First Name</label>
-            <input id="honoreeFirstName" name="honoreeFirstName" />
-          </div>
-          <div class="field">
-            <label for="honoreeLastName">Honoree Last Name</label>
-            <input id="honoreeLastName" name="honoreeLastName" />
-          </div>
-          <div class="field">
-            <label for="ageTurning">Age Turning</label>
-            <input id="ageTurning" name="ageTurning" />
-          </div>
-          <div class="field">
-            <label for="eventDate">Event Date</label>
-            <input id="eventDate" name="eventDate" type="date" />
-          </div>
-          <div class="field">
-            <label for="eventTime">Event Time</label>
-            <input id="eventTime" name="eventTime" placeholder="Example: 4:00 PM" />
-          </div>
-          <div class="field">
-            <label for="birthdayThemeColors">Theme / Colors</label>
-            <input id="birthdayThemeColors" name="birthdayThemeColors" />
-          </div>
-          <div class="field">
-            <label for="venueLocation">Venue / Location</label>
-            <input id="venueLocation" name="venueLocation" />
-          </div>
-        </div>
-
-        <div class="grid-1" style="margin-top: 14px;">
-          <div class="field">
-            <label for="birthdayWording">Wording / Saying</label>
-            <textarea id="birthdayWording" name="birthdayWording"></textarea>
-          </div>
-          <div class="field">
-            <label for="birthdayPhotoNotes">Photo Notes</label>
-            <textarea id="birthdayPhotoNotes" name="birthdayPhotoNotes"></textarea>
-          </div>
-          <div class="field">
-            <label for="outfitDressCode">Outfit / Dress Code</label>
-            <input id="outfitDressCode" name="outfitDressCode" />
-          </div>
-        </div>
-      </div>
-
-      <div class="card hidden" id="graduationFields">
-        <h2 class="section-title">Graduation Details</h2>
-        <div class="grid">
-          <div class="field">
-            <label for="graduateFirstName">Graduate First Name</label>
-            <input id="graduateFirstName" name="graduateFirstName" />
-          </div>
-          <div class="field">
-            <label for="graduateLastName">Graduate Last Name</label>
-            <input id="graduateLastName" name="graduateLastName" />
-          </div>
-          <div class="field">
-            <label for="schoolName">School Name</label>
-            <input id="schoolName" name="schoolName" />
-          </div>
-          <div class="field">
-            <label for="classYear">Class Year</label>
-            <input id="classYear" name="classYear" />
-          </div>
-          <div class="field">
-            <label for="gradColors">Colors</label>
-            <input id="gradColors" name="gradColors" />
-          </div>
-          <div class="field">
-            <label for="degreeHonor">Degree / Honor</label>
-            <input id="degreeHonor" name="degreeHonor" />
-          </div>
-          <div class="field">
-            <label for="mascot">Mascot</label>
-            <input id="mascot" name="mascot" />
-          </div>
-          <div class="field">
-            <label for="futureSchoolCareer">Future School / Career</label>
-            <input id="futureSchoolCareer" name="futureSchoolCareer" />
-          </div>
-          <div class="field">
-            <label for="jerseyNumber">Jersey Number</label>
-            <input id="jerseyNumber" name="jerseyNumber" />
-          </div>
-        </div>
-
-        <div class="grid-1" style="margin-top: 14px;">
-          <div class="field">
-            <label for="gradWordingQuote">Wording / Quote</label>
-            <textarea id="gradWordingQuote" name="gradWordingQuote"></textarea>
-          </div>
-          <div class="field">
-            <label for="gradPhotoNotes">Photo Notes</label>
-            <textarea id="gradPhotoNotes" name="gradPhotoNotes"></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="items-head">
-          <div>
-            <h2 class="section-title" style="margin-bottom: 4px;">Invoice Items</h2>
-            <div class="hint">One design. Add all items, sizes, quantities, and prices below.</div>
-          </div>
-          <div class="no-print actions" style="margin-top:0;">
-            <button type="button" class="secondary" id="btnAddItem">Add Item</button>
-          </div>
-        </div>
-
-        <div id="itemsWrap"></div>
-
-        <div class="totals-box">
-          <div class="totals-row"><span>Subtotal</span><span id="subtotalDisplay">$0.00</span></div>
-          <div class="totals-row"><span>Tax</span><span id="taxDisplay">$0.00</span></div>
-          <div class="totals-row"><span>Total</span><span id="totalDisplay">$0.00</span></div>
-          <div class="totals-row"><span>Retainer Paid</span><span id="retainerDisplay">$0.00</span></div>
-          <div class="totals-row"><strong>Balance Due</strong><strong id="balanceDisplay">$0.00</strong></div>
-        </div>
-
-        <div class="grid" style="margin-top: 14px;">
-          <div class="field">
-            <label for="taxRate">Tax Rate (%)</label>
-            <input id="taxRate" name="taxRate" type="number" step="0.01" value="0" />
-          </div>
-          <div class="field">
-            <label for="retainerPaid">Retainer Paid</label>
-            <input id="retainerPaid" name="retainerPaid" type="number" step="0.01" value="0" />
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2 class="section-title">Reference Information</h2>
-        <div class="grid">
-          <div class="field">
-            <label for="imageSource">Image Source</label>
-            <select id="imageSource" name="imageSource">
-              <option value="Upload">Upload</option>
-              <option value="Google Drive">Google Drive</option>
-              <option value="Dropbox">Dropbox</option>
-              <option value="Text Message">Text Message</option>
-              <option value="Email">Email</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="uploadLink">Upload Link</label>
-            <input id="uploadLink" name="uploadLink" placeholder="Paste Dropbox, Google Drive, WeTransfer, or other file link" />
-          </div>
-        </div>
-
-        <div class="grid-1" style="margin-top: 14px;">
-          <div class="field">
-            <label for="referenceNotes">Reference Notes</label>
-            <textarea id="referenceNotes" name="referenceNotes" placeholder="Examples: use sample 2 for layout, photo 4 is the main photo, keep same wording style as flyer example..."></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2 class="section-title">Confirmation</h2>
-        <div class="grid-1">
-          <div class="field">
-            <label for="confirmIntake" class="confirm-label">
-              <input id="confirmIntake" name="confirmIntake" type="checkbox" />
-              <span>I confirm that the information entered on this form is correct.</span>
-            </label>
-            <div class="hint">This box must be checked before the form can be completed.</div>
+          <div class="invoice-signoff">
+            <div class="sign-row">
+              <span>Customer Signature: ______________________________</span>
+            </div>
+            <div class="sign-row">
+              <span>Date: ____________________</span>
+            </div>
+            <div class="sign-row">
+              <span>Shop Rep: ______________________________</span>
+            </div>
           </div>
         </div>
       </div>
@@ -754,6 +1138,8 @@
         <div class="item-title">Item <span class="item-number"></span></div>
         <button type="button" class="danger btnRemoveItem">Remove Item</button>
       </div>
+
+      <div class="item-print-meta print-only"></div>
 
       <div class="grid-4">
         <div class="field">
@@ -982,6 +1368,23 @@
       }
     }
 
+    function updatePrintHeader() {
+      const invoiceDate = document.getElementById('invoiceDate')?.value || '';
+      const orderId = document.getElementById('orderId')?.value || '';
+      const clientName = document.getElementById('clientName')?.value || '';
+      const clientPhone = document.getElementById('clientPhone')?.value || '';
+
+      const invoiceDateEl = document.getElementById('printInvoiceDate');
+      const orderIdEl = document.getElementById('printOrderId');
+      const clientNameEl = document.getElementById('printClientName');
+      const clientPhoneEl = document.getElementById('printClientPhone');
+
+      if (invoiceDateEl) invoiceDateEl.textContent = invoiceDate;
+      if (orderIdEl) orderIdEl.textContent = orderId;
+      if (clientNameEl) clientNameEl.textContent = clientName;
+      if (clientPhoneEl) clientPhoneEl.textContent = clientPhone;
+    }
+
     function val(id) {
       const el = document.getElementById(id);
       return el ? String(el.value || '').trim() : '';
@@ -1017,6 +1420,7 @@
 
     function getAutoPrice(itemType, size) {
       if (!itemType || !size) return null;
+      if (size === 'Other') return null;
       const typePrices = SHIRT_PRICE_MAP[itemType];
       if (!typePrices) return null;
       return Object.prototype.hasOwnProperty.call(typePrices, size) ? typePrices[size] : null;
@@ -1148,9 +1552,24 @@
       updateTotals();
     }
 
+
+    function buildItemPrintMeta(card) {
+      const itemType = getCardFinalItemType(card) || '—';
+      const itemName = card.querySelector('.itemName')?.value.trim() || '—';
+      const itemNotes = card.querySelector('.itemNotes')?.value.trim() || '—';
+      const meta = card.querySelector('.item-print-meta');
+      if (!meta) return;
+      meta.innerHTML = `<strong>Type:</strong> ${itemType} | <strong>Name:</strong> ${itemName} | <strong>Notes:</strong> ${itemNotes}`;
+    }
+
+    function updateAllItemPrintMeta() {
+      Array.from(itemsWrap.querySelectorAll('.item-card')).forEach(buildItemPrintMeta);
+    }
+
     function refreshItemNumbers() {
       Array.from(itemsWrap.querySelectorAll('.item-card')).forEach((card, index) => {
         card.querySelector('.item-number').textContent = index + 1;
+        buildItemPrintMeta(card);
       });
     }
 
@@ -1197,6 +1616,7 @@
       itemsWrap.appendChild(card);
       bindItemTypeToggle(card);
       addSizeRow(card);
+      buildItemPrintMeta(card);
       refreshItemNumbers();
       updateTotals();
     }
@@ -1267,6 +1687,7 @@
       document.getElementById('totalDisplay').textContent = money(total);
       document.getElementById('retainerDisplay').textContent = money(retainerPaid);
       document.getElementById('balanceDisplay').textContent = money(balance);
+      updateAllItemPrintMeta();
     }
 
     function buildIntakeObject() {
@@ -1314,8 +1735,10 @@
       intake.invoice = {
         subtotal,
         taxRate,
+        paymentType: val('paymentType'),
         tax,
         total,
+        retainerPaymentAmount: retainerPaid,
         retainerPaid,
         balanceDue
       };
@@ -1422,7 +1845,7 @@
       const { intake, errors } = buildIntakeObject();
       jsonPreview.textContent = JSON.stringify(intake, null, 2);
       if (errors.length) {
-        setStatus(errorBox, 'error', errors.join('\\n'));
+        setStatus(errorBox, 'error', errors.join('\n'));
       } else {
         clearStatus(errorBox);
       }
@@ -1521,6 +1944,7 @@
     document.getElementById('btnPrint').addEventListener('click', () => {
       clearStatus(copyStatus);
       renderPreview();
+      updatePrintHeader();
       window.print();
     });
 
@@ -1533,12 +1957,14 @@
     document.getElementById('btnPrintTop').addEventListener('click', () => {
       clearStatus(copyStatus);
       renderPreview();
+      updatePrintHeader();
       window.print();
     });
 
     document.getElementById('intakeForm').addEventListener('input', () => {
       clearStatus(copyStatus);
       renderPreview();
+      updatePrintHeader();
     });
 
     document.getElementById('invoiceDate').value = new Date().toISOString().slice(0, 10);
@@ -1546,6 +1972,7 @@
     showTypeFields();
     showCustomDateLabels();
     updateMemorialDateLabels();
+    updatePrintHeader();
     addItem();
     renderPreview();
   </script>
