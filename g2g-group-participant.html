@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G2G Group Participant Order Form</title>
+  <style>
+    :root {
+      --bg: #f7f7f9;
+      --card: #ffffff;
+      --line: #d9dbe1;
+      --text: #1f2430;
+      --muted: #5d6677;
+      --accent: #2f5cff;
+      --danger: #b42318;
+      --success: #067647;
+      --warning: #b54708;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: auto;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .g2g-header {
+      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+      border: 1px solid #374151;
+    }
+
+    .g2g-brand {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .g2g-tagline {
+      font-size: 14px;
+      color: #d1d5db;
+      margin-bottom: 10px;
+    }
+
+    .g2g-form-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #93c5fd;
+    }
+
+    .sticky-actions {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: var(--bg);
+      padding: 12px 0;
+      margin-bottom: 18px;
+    }
+
+    .sticky-actions .card {
+      margin-bottom: 0;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin: 0 0 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 14px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .secondary {
+      background: #e9edff;
+      color: #1939b7;
+    }
+
+    .ghost {
+      background: #eef1f5;
+      color: var(--text);
+    }
+
+    .danger {
+      background: #fee4e2;
+      color: #b42318;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: pre-line;
+    }
+
+    .status.error { color: var(--danger); }
+    .status.success { color: var(--success); }
+    .status.warning { color: var(--warning); }
+
+    pre {
+      margin: 0;
+      border-radius: 12px;
+      padding: 14px;
+      background: #111827;
+      color: #f3f4f6;
+      overflow: auto;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .items-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .item-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+      background: #fcfcfd;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .item-title {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      margin-top: 10px;
+      table-layout: fixed;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f9fafb;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+      color: var(--muted);
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 42%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 14%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 16%;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 16%;
+    }
+
+    th:nth-child(5),
+    td:nth-child(5) {
+      width: 12%;
+    }
+
+    td input,
+    td select {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .sizeDropdown,
+    .sizeName {
+      min-width: 160px;
+      font-size: 16px;
+    }
+
+    .row-total {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .totals-box {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .totals-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .totals-row:last-child {
+      border-bottom: 0;
+    }
+
+    .totals-row strong {
+      font-size: 16px;
+    }
+
+    .confirm-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .confirm-label input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+    }
+
+    @media (max-width: 760px) {
+      .grid, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        padding: 14px;
+      }
+
+      .g2g-header {
+        padding: 18px 16px;
+      }
+
+      .g2g-brand {
+        font-size: 24px;
+      }
+
+      .g2g-form-title {
+        font-size: 16px;
+      }
+
+      .sizeDropdown,
+      .sizeName {
+        min-width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+        font-size: 12px;
+      }
+
+      .no-print,
+      #jsonPreviewCard,
+      .sticky-actions {
+        display: none !important;
+      }
+
+      .g2g-header {
+        margin-bottom: 10px;
+        padding: 14px 16px;
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #ccc;
+      }
+
+      .g2g-tagline,
+      .g2g-form-title {
+        color: #000 !important;
+      }
+
+      .card {
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 10px;
+        padding: 12px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      input,
+      select,
+      textarea {
+        border: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+
+      textarea {
+        min-height: auto !important;
+      }
+
+      table {
+        width: 100%;
+        min-width: 0 !important;
+        table-layout: fixed;
+      }
+
+      th,
+      td {
+        font-size: 12px;
+        padding: 6px;
+      }
+
+      .item-card {
+        overflow: visible !important;
+      }
+
+      .totals-box {
+        margin-top: 10px;
+      }
+
+      .totals-row {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+
+      .totals-row strong {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="g2g-header">
+      <div class="g2g-brand">G2G Print Shop</div>
+      <div class="g2g-tagline">Custom Apparel &amp; Printing</div>
+      <div class="g2g-form-title">Group Participant Order Form</div>
+    </div>
+
+    <div class="sticky-actions no-print">
+      <div class="card">
+        <h2 class="section-title">Quick Actions</h2>
+        <div class="actions">
+          <button type="button" class="primary" id="btnDownloadTop">Download participant.json</button>
+          <button type="button" class="secondary" id="btnPreviewTop">Preview JSON</button>
+          <button type="button" class="ghost" id="btnCopyTop">Copy JSON</button>
+          <button type="button" class="ghost" id="btnPrintTop">Print Participant Order</button>
+        </div>
+      </div>
+    </div>
+
+    <form id="participantForm">
+      <div class="card">
+        <h2 class="section-title">Main Group Order Information</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="masterOrderId">Main Order ID</label>
+            <input id="masterOrderId" name="masterOrderId" placeholder="Example: G2G-1001" required />
+          </div>
+          <div class="field">
+            <label for="groupName">Group / Design Name</label>
+            <input id="groupName" name="groupName" placeholder="Example: Class of 2026 Shirts" />
+          </div>
+          <div class="field">
+            <label for="orderType">Order Type</label>
+            <select id="orderType" name="orderType">
+              <option value="">Select one</option>
+              <option value="Memorial">Memorial</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="participantDate">Order Date</label>
+            <input id="participantDate" name="participantDate" type="date" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Participant Information</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="participantName">Participant Name</label>
+            <input id="participantName" name="participantName" required />
+          </div>
+          <div class="field">
+            <label for="participantPhone">Phone</label>
+            <input id="participantPhone" name="participantPhone" />
+          </div>
+          <div class="field">
+            <label for="participantEmail">Email</label>
+            <input id="participantEmail" name="participantEmail" type="email" />
+          </div>
+          <div class="field">
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod" name="paymentMethod">
+              <option value="">Select one</option>
+              <option value="Cash">Cash</option>
+              <option value="Card">Card</option>
+              <option value="Cash App">Cash App</option>
+              <option value="Zelle">Zelle</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="items-head">
+          <div>
+            <h2 class="section-title" style="margin-bottom: 4px;">Participant Items</h2>
+            <div class="hint">Add the items this participant is ordering under the same main job.</div>
+          </div>
+          <div class="no-print actions" style="margin-top:0;">
+            <button type="button" class="secondary" id="btnAddItem">Add Item</button>
+          </div>
+        </div>
+
+        <div id="itemsWrap"></div>
+
+        <div class="totals-box">
+          <div class="totals-row"><span>Subtotal</span><span id="subtotalDisplay">$0.00</span></div>
+          <div class="totals-row"><span>Tax</span><span id="taxDisplay">$0.00</span></div>
+          <div class="totals-row"><span>Total</span><span id="totalDisplay">$0.00</span></div>
+          <div class="totals-row"><span>Amount Paid</span><span id="amountPaidDisplay">$0.00</span></div>
+          <div class="totals-row"><strong>Balance Due</strong><strong id="balanceDisplay">$0.00</strong></div>
+        </div>
+
+        <div class="grid" style="margin-top: 14px;">
+          <div class="field">
+            <label for="taxRate">Tax Rate (%)</label>
+            <input id="taxRate" name="taxRate" type="number" step="0.01" value="0" />
+          </div>
+          <div class="field">
+            <label for="amountPaid">Amount Paid</label>
+            <input id="amountPaid" name="amountPaid" type="number" step="0.01" value="0" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Participant Notes</h2>
+        <div class="grid-1">
+          <div class="field">
+            <label for="participantNotes">Notes</label>
+            <textarea id="participantNotes" name="participantNotes" placeholder="Pickup notes, shirt assignment, special requests, etc."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Confirmation</h2>
+        <div class="grid-1">
+          <div class="field">
+            <label for="confirmParticipant" class="confirm-label">
+              <input id="confirmParticipant" name="confirmParticipant" type="checkbox" />
+              <span>I confirm that the information entered on this form is correct.</span>
+            </label>
+            <div class="hint">This box must be checked before the form can be completed.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Build JSON</h2>
+        <div class="actions">
+          <button type="button" class="primary" id="btnDownload">Download participant.json</button>
+          <button type="button" class="secondary" id="btnPreview">Preview JSON</button>
+          <button type="button" class="ghost" id="btnCopy">Copy JSON</button>
+          <button type="button" class="ghost" id="btnPrint">Print Participant Order</button>
+        </div>
+        <div id="errorBox" class="status error hidden"></div>
+        <div id="copyStatus" class="status hidden"></div>
+      </div>
+    </form>
+
+    <div class="card" id="jsonPreviewCard">
+      <h2 class="section-title">JSON Preview</h2>
+      <pre id="jsonPreview">{}</pre>
+    </div>
+  </div>
+
+  <template id="itemTemplate">
+    <div class="item-card">
+      <div class="item-top">
+        <div class="item-title">Item <span class="item-number"></span></div>
+        <button type="button" class="danger btnRemoveItem">Remove Item</button>
+      </div>
+
+      <div class="grid-4">
+        <div class="field">
+          <label>Item Type</label>
+          <select class="itemType">
+            <option value="">Select Item Type</option>
+            <option value="Full Bleed T-shirt">Full Bleed T-shirt</option>
+            <option value="Black-Out T-shirt">Black-Out T-shirt</option>
+            <option value="Center Design Sub">Center Design Sub</option>
+            <option value="Center Design Cotton">Center Design Cotton</option>
+            <option value="Socks">Socks</option>
+            <option value="Necktie">Necktie</option>
+            <option value="Stole">Stole</option>
+            <option value="20oz Skinny Tumbler">20oz Skinny Tumbler</option>
+            <option value="Yard Sign">Yard Sign</option>
+            <option value="Graduation Fan">Graduation Fan</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="field customItemTypeWrap hidden">
+          <label>Custom Item Type</label>
+          <input class="customItemType" placeholder="Enter custom item type" />
+        </div>
+
+        <div class="field">
+          <label>Item Name</label>
+          <input class="itemName" placeholder="Example: Parent Shirt" />
+        </div>
+
+        <div class="field">
+          <label>Item Notes</label>
+          <input class="itemNotes" placeholder="Front only, back add-on, etc." />
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Qty</th>
+            <th>Unit Price</th>
+            <th>Line Total</th>
+            <th class="no-print">Action</th>
+          </tr>
+        </thead>
+        <tbody class="sizesBody"></tbody>
+      </table>
+
+      <div class="actions no-print" style="margin-top: 10px;">
+        <button type="button" class="secondary btnAddSize">Add Size Row</button>
+        <button type="button" class="ghost btnAutoFillSizes">Load Shirt Size Matrix</button>
+      </div>
+    </div>
+  </template>
+
+  <template id="sizeRowTemplate">
+    <tr>
+      <td>
+        <input class="sizeName" placeholder="Adult Medium, 24x18 Yard Sign, Round Fan" />
+        <select class="sizeDropdown hidden">
+          <option value="">Select Size</option>
+          <option value="Infant 6M">Infant 6M</option>
+          <option value="Infant 12M">Infant 12M</option>
+          <option value="Infant 18M">Infant 18M</option>
+          <option value="Toddler 2T">Toddler 2T</option>
+          <option value="Toddler 3T">Toddler 3T</option>
+          <option value="Toddler 4T">Toddler 4T</option>
+          <option value="Youth XS">Youth XS</option>
+          <option value="Youth S">Youth S</option>
+          <option value="Youth M">Youth M</option>
+          <option value="Youth L">Youth L</option>
+          <option value="Youth XL">Youth XL</option>
+          <option value="Adult S">Adult S</option>
+          <option value="Adult M">Adult M</option>
+          <option value="Adult L">Adult L</option>
+          <option value="Adult XL">Adult XL</option>
+          <option value="Adult 2X">Adult 2X</option>
+          <option value="Adult 3X">Adult 3X</option>
+          <option value="Adult 4X">Adult 4X</option>
+          <option value="Adult 5X">Adult 5X</option>
+          <option value="Other">Other</option>
+        </select>
+      </td>
+      <td><input class="sizeQty" type="number" min="0" step="1" value="1" /></td>
+      <td><input class="sizePrice" type="number" min="0" step="0.01" value="0" /></td>
+      <td><span class="row-total">$0.00</span></td>
+      <td class="no-print"><button type="button" class="danger btnRemoveSize">Remove</button></td>
+    </tr>
+  </template>
+
+  <script>
+    const SHIRT_PRICE_MAP = {
+      "Full Bleed T-shirt": {
+        "Infant 6M": 25,
+        "Infant 12M": 25,
+        "Infant 18M": 25,
+        "Toddler 2T": 25,
+        "Toddler 3T": 25,
+        "Toddler 4T": 25,
+        "Youth XS": 35,
+        "Youth S": 35,
+        "Youth M": 35,
+        "Youth L": 35,
+        "Youth XL": 35,
+        "Adult S": 50,
+        "Adult M": 50,
+        "Adult L": 50,
+        "Adult XL": 50,
+        "Adult 2X": 55,
+        "Adult 3X": 55,
+        "Adult 4X": 60,
+        "Adult 5X": 60
+      },
+      "Black-Out T-shirt": {
+        "Adult S": 35,
+        "Adult M": 35,
+        "Adult L": 35,
+        "Adult XL": 35,
+        "Adult 2X": 40,
+        "Adult 3X": 40,
+        "Adult 4X": 45
+      },
+      "Center Design Sub": {
+        "Infant 6M": 17,
+        "Infant 12M": 17,
+        "Infant 18M": 17,
+        "Toddler 2T": 17,
+        "Toddler 3T": 17,
+        "Toddler 4T": 17,
+        "Youth XS": 20,
+        "Youth S": 20,
+        "Youth M": 20,
+        "Youth L": 20,
+        "Youth XL": 20,
+        "Adult S": 25,
+        "Adult M": 25,
+        "Adult L": 25,
+        "Adult XL": 25,
+        "Adult 2X": 30,
+        "Adult 3X": 30,
+        "Adult 4X": 35,
+        "Adult 5X": 40
+      },
+      "Center Design Cotton": {
+        "Infant 6M": 17,
+        "Infant 12M": 17,
+        "Infant 18M": 17,
+        "Toddler 2T": 17,
+        "Toddler 3T": 17,
+        "Toddler 4T": 17,
+        "Youth XS": 20,
+        "Youth S": 20,
+        "Youth M": 20,
+        "Youth L": 20,
+        "Youth XL": 20,
+        "Adult S": 25,
+        "Adult M": 25,
+        "Adult L": 25,
+        "Adult XL": 25,
+        "Adult 2X": 30,
+        "Adult 3X": 30,
+        "Adult 4X": 35,
+        "Adult 5X": 40
+      }
+    };
+
+    const errorBox = document.getElementById('errorBox');
+    const copyStatus = document.getElementById('copyStatus');
+    const jsonPreview = document.getElementById('jsonPreview');
+    const itemsWrap = document.getElementById('itemsWrap');
+    const itemTemplate = document.getElementById('itemTemplate');
+    const sizeRowTemplate = document.getElementById('sizeRowTemplate');
+
+    function setHidden(el, hidden) {
+      el.classList.toggle('hidden', hidden);
+    }
+
+    function setStatus(el, kind, text) {
+      el.className = `status ${kind}`;
+      el.textContent = text;
+      setHidden(el, false);
+    }
+
+    function clearStatus(el) {
+      el.textContent = '';
+      el.className = 'status hidden';
+    }
+
+    function val(id) {
+      const el = document.getElementById(id);
+      return el ? String(el.value || '').trim() : '';
+    }
+
+    function numVal(value) {
+      const n = parseFloat(String(value || '').trim());
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function money(n) {
+      return `$${Number(n || 0).toFixed(2)}`;
+    }
+
+    function requireFields(errors, pairs) {
+      for (const [value, label] of pairs) {
+        if (!String(value || '').trim()) errors.push(label + ' is required.');
+      }
+    }
+
+    function isShirtType(itemType) {
+      return [
+        'Full Bleed T-shirt',
+        'Black-Out T-shirt',
+        'Center Design Sub',
+        'Center Design Cotton'
+      ].includes(itemType);
+    }
+
+    function getAutoPrice(itemType, size) {
+      if (!itemType || !size) return null;
+      if (size === 'Other') return null;
+      const typePrices = SHIRT_PRICE_MAP[itemType];
+      if (!typePrices) return null;
+      return Object.prototype.hasOwnProperty.call(typePrices, size) ? typePrices[size] : null;
+    }
+
+    function getCardFinalItemType(itemCard) {
+      const itemTypeSelect = itemCard.querySelector('.itemType').value.trim();
+      const customItemType = (itemCard.querySelector('.customItemType')?.value || '').trim();
+      return itemTypeSelect === 'Other' ? customItemType : itemTypeSelect;
+    }
+
+    function updateAutoPrices(itemCard) {
+      const itemType = getCardFinalItemType(itemCard);
+
+      itemCard.querySelectorAll('.sizesBody tr').forEach(row => {
+        const textInput = row.querySelector('.sizeName');
+        const dropdown = row.querySelector('.sizeDropdown');
+        const priceInput = row.querySelector('.sizePrice');
+
+        const size = !dropdown.classList.contains('hidden')
+          ? dropdown.value.trim()
+          : textInput.value.trim();
+
+        const autoPrice = getAutoPrice(itemType, size);
+
+        if (autoPrice !== null) {
+          priceInput.value = autoPrice;
+        }
+      });
+
+      updateTotals();
+    }
+
+    function updateSizeInputMode(itemCard) {
+      const selectedType = getCardFinalItemType(itemCard);
+      const useDropdown = isShirtType(selectedType);
+
+      itemCard.querySelectorAll('.sizesBody tr').forEach(row => {
+        const textInput = row.querySelector('.sizeName');
+        const dropdown = row.querySelector('.sizeDropdown');
+
+        if (useDropdown) {
+          dropdown.classList.remove('hidden');
+          textInput.classList.add('hidden');
+          if (textInput.value && !dropdown.value) {
+            dropdown.value = textInput.value;
+          }
+        } else {
+          dropdown.classList.add('hidden');
+          textInput.classList.remove('hidden');
+          if (dropdown.value && !textInput.value) {
+            textInput.value = dropdown.value;
+          }
+        }
+      });
+
+      updateAutoPrices(itemCard);
+      updateTotals();
+    }
+
+    function addSizeRow(itemCard, sizeName = '', qty = 1, price = 0) {
+      const frag = sizeRowTemplate.content.cloneNode(true);
+      const row = frag.querySelector('tr');
+
+      const textInput = row.querySelector('.sizeName');
+      const dropdown = row.querySelector('.sizeDropdown');
+
+      textInput.value = sizeName;
+      dropdown.value = sizeName;
+
+      row.querySelector('.sizeQty').value = qty;
+      row.querySelector('.sizePrice').value = price;
+
+      row.querySelector('.btnRemoveSize').addEventListener('click', () => {
+        row.remove();
+        updateTotals();
+      });
+
+      row.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', () => {
+          updateAutoPrices(itemCard);
+          updateTotals();
+        });
+        input.addEventListener('change', () => {
+          updateAutoPrices(itemCard);
+          updateTotals();
+        });
+      });
+
+      itemCard.querySelector('.sizesBody').appendChild(row);
+      updateSizeInputMode(itemCard);
+      updateTotals();
+    }
+
+    function autoFillShirtSizes(itemCard) {
+      const finalType = getCardFinalItemType(itemCard);
+      if (!isShirtType(finalType)) return;
+
+      const shirtSizes = [
+        "Infant 6M",
+        "Infant 12M",
+        "Infant 18M",
+        "Toddler 2T",
+        "Toddler 3T",
+        "Toddler 4T",
+        "Youth XS",
+        "Youth S",
+        "Youth M",
+        "Youth L",
+        "Youth XL",
+        "Adult S",
+        "Adult M",
+        "Adult L",
+        "Adult XL",
+        "Adult 2X",
+        "Adult 3X",
+        "Adult 4X",
+        "Adult 5X",
+        "Other"
+      ];
+
+      const body = itemCard.querySelector('.sizesBody');
+      body.innerHTML = '';
+
+      shirtSizes.forEach(size => {
+        addSizeRow(itemCard, size, 0, 0);
+      });
+
+      updateTotals();
+    }
+
+    function refreshItemNumbers() {
+      Array.from(itemsWrap.querySelectorAll('.item-card')).forEach((card, index) => {
+        card.querySelector('.item-number').textContent = index + 1;
+      });
+    }
+
+    function bindItemTypeToggle(card) {
+      const itemTypeSelect = card.querySelector('.itemType');
+      const customWrap = card.querySelector('.customItemTypeWrap');
+      const customInput = card.querySelector('.customItemType');
+
+      function updateCustomVisibility() {
+        const isOther = itemTypeSelect.value === 'Other';
+        customWrap.classList.toggle('hidden', !isOther);
+        if (!isOther) customInput.value = '';
+        updateSizeInputMode(card);
+        updateTotals();
+      }
+
+      itemTypeSelect.addEventListener('change', updateCustomVisibility);
+      customInput.addEventListener('input', () => {
+        updateSizeInputMode(card);
+        updateTotals();
+      });
+
+      updateCustomVisibility();
+    }
+
+    function addItem() {
+      const frag = itemTemplate.content.cloneNode(true);
+      const card = frag.querySelector('.item-card');
+
+      card.querySelector('.btnRemoveItem').addEventListener('click', () => {
+        card.remove();
+        refreshItemNumbers();
+        updateTotals();
+      });
+
+      card.querySelector('.btnAddSize').addEventListener('click', () => addSizeRow(card));
+      card.querySelector('.btnAutoFillSizes').addEventListener('click', () => autoFillShirtSizes(card));
+
+      card.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', updateTotals);
+        input.addEventListener('change', updateTotals);
+      });
+
+      itemsWrap.appendChild(card);
+      bindItemTypeToggle(card);
+      addSizeRow(card);
+      refreshItemNumbers();
+      updateTotals();
+    }
+
+    function collectItems() {
+      const items = [];
+      const cards = Array.from(itemsWrap.querySelectorAll('.item-card'));
+
+      cards.forEach(card => {
+        const itemType = getCardFinalItemType(card);
+        const itemName = card.querySelector('.itemName').value.trim();
+        const itemNotes = card.querySelector('.itemNotes').value.trim();
+
+        const rows = Array.from(card.querySelectorAll('.sizesBody tr'));
+        const sizes = [];
+        let itemTotal = 0;
+
+        rows.forEach(row => {
+          const textInput = row.querySelector('.sizeName');
+          const dropdown = row.querySelector('.sizeDropdown');
+          const size = !dropdown.classList.contains('hidden')
+            ? dropdown.value.trim()
+            : textInput.value.trim();
+
+          const qty = numVal(row.querySelector('.sizeQty').value);
+          const price = numVal(row.querySelector('.sizePrice').value);
+          const total = qty * price;
+
+          row.querySelector('.row-total').textContent = money(total);
+
+          if (!size && !qty && !price) return;
+
+          sizes.push({
+            size,
+            qty,
+            unitPrice: price,
+            total
+          });
+
+          itemTotal += total;
+        });
+
+        if (!itemType && !itemName && !itemNotes && sizes.length === 0) return;
+
+        items.push({
+          itemType,
+          itemName,
+          notes: itemNotes,
+          sizes,
+          itemTotal
+        });
+      });
+
+      return items;
+    }
+
+    function updateTotals() {
+      const items = collectItems();
+      const subtotal = items.reduce((sum, item) => sum + item.itemTotal, 0);
+      const taxRate = numVal(document.getElementById('taxRate').value);
+      const amountPaid = numVal(document.getElementById('amountPaid').value);
+      const tax = subtotal * (taxRate / 100);
+      const total = subtotal + tax;
+      const balance = total - amountPaid;
+
+      document.getElementById('subtotalDisplay').textContent = money(subtotal);
+      document.getElementById('taxDisplay').textContent = money(tax);
+      document.getElementById('totalDisplay').textContent = money(total);
+      document.getElementById('amountPaidDisplay').textContent = money(amountPaid);
+      document.getElementById('balanceDisplay').textContent = money(balance);
+    }
+
+    function buildParticipantObject() {
+      const errors = [];
+
+      requireFields(errors, [
+        [val('masterOrderId'), 'Main Order ID'],
+        [val('participantName'), 'Participant Name']
+      ]);
+
+      const participant = {
+        masterOrderId: val('masterOrderId'),
+        groupName: val('groupName'),
+        orderType: val('orderType'),
+        participantDate: val('participantDate'),
+        participant: {
+          name: val('participantName'),
+          phone: val('participantPhone'),
+          email: val('participantEmail')
+        },
+        paymentMethod: val('paymentMethod'),
+        items: collectItems(),
+        notes: val('participantNotes'),
+        invoice: {}
+      };
+
+      const subtotal = participant.items.reduce((sum, item) => sum + item.itemTotal, 0);
+      const taxRate = numVal(val('taxRate'));
+      const tax = subtotal * (taxRate / 100);
+      const total = subtotal + tax;
+      const amountPaid = numVal(val('amountPaid'));
+      const balanceDue = total - amountPaid;
+
+      participant.invoice = {
+        subtotal,
+        taxRate,
+        tax,
+        total,
+        amountPaid,
+        balanceDue
+      };
+
+      if (participant.items.length === 0) {
+        errors.push('At least one item is required.');
+      }
+
+      if (!document.getElementById('confirmParticipant')?.checked) {
+        errors.push('Please confirm that the information entered on the form is correct.');
+      }
+
+      return { participant, errors };
+    }
+
+    function renderPreview() {
+      const { participant, errors } = buildParticipantObject();
+      jsonPreview.textContent = JSON.stringify(participant, null, 2);
+      if (errors.length) {
+        setStatus(errorBox, 'error', errors.join('\n'));
+      } else {
+        clearStatus(errorBox);
+      }
+      updateTotals();
+      return { participant, errors };
+    }
+
+    function downloadJson() {
+      clearStatus(copyStatus);
+      const { participant, errors } = renderPreview();
+      if (errors.length) return;
+
+      const orderPart = (participant.masterOrderId || 'group').replace(/[^a-z0-9]+/gi, '_');
+      const namePart = (participant.participant.name || 'participant').replace(/[^a-z0-9]+/gi, '_');
+      const fileName = `${orderPart}_${namePart}_participant.json`;
+
+      const blob = new Blob([JSON.stringify(participant, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function legacyCopyText(text) {
+      const helper = document.createElement('textarea');
+      helper.value = text;
+      helper.setAttribute('readonly', 'readonly');
+      helper.style.position = 'fixed';
+      helper.style.top = '-9999px';
+      helper.style.left = '-9999px';
+      document.body.appendChild(helper);
+      helper.focus();
+      helper.select();
+      helper.setSelectionRange(0, helper.value.length);
+
+      let success = false;
+      try {
+        success = document.execCommand('copy');
+      } catch (err) {
+        success = false;
+      }
+
+      document.body.removeChild(helper);
+      return success;
+    }
+
+    async function copyJson() {
+      const { participant, errors } = renderPreview();
+      if (errors.length) {
+        clearStatus(copyStatus);
+        return;
+      }
+
+      const text = JSON.stringify(participant, null, 2);
+      clearStatus(copyStatus);
+
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        try {
+          await navigator.clipboard.writeText(text);
+          setStatus(copyStatus, 'success', 'JSON copied to clipboard.');
+          return;
+        } catch (err) {}
+      }
+
+      const copied = legacyCopyText(text);
+      if (copied) {
+        setStatus(copyStatus, 'success', 'JSON copied using fallback copy mode.');
+        return;
+      }
+
+      setStatus(copyStatus, 'warning', 'Copy was blocked in this environment. Use Preview, then manually select and copy the JSON below.');
+    }
+
+    document.getElementById('btnAddItem').addEventListener('click', addItem);
+
+    document.getElementById('btnPreview').addEventListener('click', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+    });
+    document.getElementById('btnDownload').addEventListener('click', downloadJson);
+    document.getElementById('btnCopy').addEventListener('click', copyJson);
+    document.getElementById('btnPrint').addEventListener('click', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+      window.print();
+    });
+
+    document.getElementById('btnPreviewTop').addEventListener('click', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+    });
+    document.getElementById('btnDownloadTop').addEventListener('click', downloadJson);
+    document.getElementById('btnCopyTop').addEventListener('click', copyJson);
+    document.getElementById('btnPrintTop').addEventListener('click', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+      window.print();
+    });
+
+    document.getElementById('participantForm').addEventListener('input', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+    });
+
+    document.getElementById('participantDate').value = new Date().toISOString().slice(0, 10);
+
+    addItem();
+    renderPreview();
+  </script>
+</body>
+</html>
