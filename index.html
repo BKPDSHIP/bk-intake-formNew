@@ -849,14 +849,13 @@
               <input id="dueDate" name="dueDate" type="date" required />
             </div>
             <div class="field">
-  <label for="groupOrder">Is this a Group Order?</label>
-  <select id="groupOrder" name="groupOrder">
-    <option value="No">No</option>
-    <option value="Yes">Yes</option>
-  </select>
-</div>
-
-<div class="field hidden" id="groupDesignNameWrap">
+              <label for="groupOrder">Is this a Group Order?</label>
+              <select id="groupOrder" name="groupOrder">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+            <div class="field hidden" id="groupDesignNameWrap">
   <label for="groupDesignName">Group/Design Name</label>
   <input
     id="groupDesignName"
@@ -864,11 +863,10 @@
     placeholder="Example: Johnson Family Reunion Shirts"
   />
 </div>
-
-<div class="field">
-  <label for="invoiceDate">Invoice Date</label>
-  <input id="invoiceDate" name="invoiceDate" type="date" />
-</div>
+            <div class="field">
+              <label for="invoiceDate">Invoice Date</label>
+              <input id="invoiceDate" name="invoiceDate" type="date" />
+            </div>
           </div>
 
           <div class="grid-1" style="margin-top: 14px;">
@@ -1464,7 +1462,6 @@
     groupDesignName.value = '';
   }
 }
-}
     function showCustomDateLabels() {
       customDateLabelsWrap.classList.toggle('hidden', dateLabelStyle.value !== 'CUSTOM');
     }
@@ -1835,8 +1832,8 @@
         [val('designDirectionNotes'), 'Design Direction Notes']
       ]);
 
-      if (val('groupOrder') === 'Yes') {
-  requireFields(errors, [
+   if (val('groupOrder') === 'Yes') {
+     requireFields(errors, [
     [val('groupDesignName'), 'Group/Design Name']
   ]);
 }
@@ -1850,12 +1847,12 @@
           email: val('clientEmail')
         },
         order: {
-  orderType: type,
-  dueDate: val('dueDate'),
-  groupDesignName: val('groupDesignName'),
-  designDirectionNotes: val('designDirectionNotes')
+          orderType: type,
+        dueDate: val('dueDate'),
+        groupDesignName: val('groupDesignName'),
+        designDirectionNotes: val('designDirectionNotes')
 },
-        },
+
         references: {
           imageSource: val('imageSource'),
           uploadLink: val('uploadLink'),
