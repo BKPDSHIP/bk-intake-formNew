@@ -1447,13 +1447,21 @@
   graduationFields.classList.toggle('hidden', type !== 'Graduation');
   otherFields.classList.toggle('hidden', type !== 'Other');
 }
-      function toggleGroupOrderReminder() {
+     function toggleGroupOrderReminder() {
   const isGroup = groupOrderSelect.value === 'Yes';
+
   groupOrderReminderCard.classList.toggle('hidden', !isGroup);
 
   const groupDesignNameWrap = document.getElementById('groupDesignNameWrap');
+  const groupDesignName = document.getElementById('groupDesignName');
+
   if (groupDesignNameWrap) {
     groupDesignNameWrap.classList.toggle('hidden', !isGroup);
+    groupDesignNameWrap.style.display = isGroup ? '' : 'none';
+  }
+
+  if (!isGroup && groupDesignName) {
+    groupDesignName.value = '';
   }
 }
 }
