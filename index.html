@@ -849,16 +849,26 @@
               <input id="dueDate" name="dueDate" type="date" required />
             </div>
             <div class="field">
-              <label for="groupOrder">Is this a Group Order?</label>
-              <select id="groupOrder" name="groupOrder">
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="invoiceDate">Invoice Date</label>
-              <input id="invoiceDate" name="invoiceDate" type="date" />
-            </div>
+  <label for="groupOrder">Is this a Group Order?</label>
+  <select id="groupOrder" name="groupOrder">
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
+  </select>
+</div>
+
+<div class="field">
+  <label for="groupDesignName">Group/Design Name</label>
+  <input
+    id="groupDesignName"
+    name="groupDesignName"
+    placeholder="Example: Johnson Family Reunion Shirts"
+  />
+</div>
+
+<div class="field">
+  <label for="invoiceDate">Invoice Date</label>
+  <input id="invoiceDate" name="invoiceDate" type="date" />
+</div>
           </div>
 
           <div class="grid-1" style="margin-top: 14px;">
@@ -1811,6 +1821,11 @@
         [val('designDirectionNotes'), 'Design Direction Notes']
       ]);
 
+      if (val('groupOrder') === 'Yes') {
+  requireFields(errors, [
+    [val('groupDesignName'), 'Group/Design Name']
+  ]);
+}
       const intake = {
         orderId: val('orderId'),
         invoiceDate: val('invoiceDate'),
@@ -1821,9 +1836,11 @@
           email: val('clientEmail')
         },
         order: {
-          orderType: type,
-          dueDate: val('dueDate'),
-          designDirectionNotes: val('designDirectionNotes')
+  orderType: type,
+  dueDate: val('dueDate'),
+  groupDesignName: val('groupDesignName'),
+  designDirectionNotes: val('designDirectionNotes')
+},
         },
         references: {
           imageSource: val('imageSource'),
