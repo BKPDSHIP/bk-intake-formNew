@@ -1373,8 +1373,10 @@
     const jsonPreview = document.getElementById('jsonPreview');
     const itemsWrap = document.getElementById('itemsWrap');
     const itemTemplate = document.getElementById('itemTemplate');
-    const sizeRowTemplate = document.getElementById('sizeRowTemplate');
-
+    const sizeRowTemplate = document.getElementById('sizeRowTemplate');  
+    const groupOrderSelect = document.getElementById('groupOrder');
+    const groupOrderReminderCard = document.getElementById('groupOrderReminderCard');
+    
     function setHidden(el, hidden) {
       el.classList.toggle('hidden', hidden);
     }
@@ -1396,7 +1398,10 @@
       birthdayFields.classList.toggle('hidden', type !== 'Birthday');
       graduationFields.classList.toggle('hidden', type !== 'Graduation');
     }
-
+      function toggleGroupOrderReminder() {
+  const isGroup = groupOrderSelect.value === 'Yes';
+  groupOrderReminderCard.classList.toggle('hidden', !isGroup);
+}
     function showCustomDateLabels() {
       customDateLabelsWrap.classList.toggle('hidden', dateLabelStyle.value !== 'CUSTOM');
     }
@@ -1990,7 +1995,7 @@
     }
 
     orderType.addEventListener('change', showTypeFields);
-
+groupOrderSelect.addEventListener('change', toggleGroupOrderReminder);
     dateLabelStyle.addEventListener('change', () => {
       showCustomDateLabels();
       updateMemorialDateLabels();
@@ -2036,11 +2041,12 @@
     document.getElementById('invoiceDate').value = new Date().toISOString().slice(0, 10);
 
     showTypeFields();
-    showCustomDateLabels();
-    updateMemorialDateLabels();
-    updatePrintHeader();
-    addItem();
-    renderPreview();
+showCustomDateLabels();
+updateMemorialDateLabels();
+updatePrintHeader();
+toggleGroupOrderReminder();
+addItem();
+renderPreview();
   </script>
 </body>
 </html>
