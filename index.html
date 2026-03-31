@@ -1103,43 +1103,7 @@
               <input id="uploadLink" name="uploadLink" placeholder="Paste Dropbox, Google Drive, WeTransfer, or other file link" />
             </div>
           </div>
-<div class="card hidden" id="otherFields">
-  <h2 class="section-title">Other Details</h2>
 
-  <div class="grid">
-    <div class="field">
-      <label for="customOrderType">Custom Order Type</label>
-      <input id="customOrderType" name="customOrderType" placeholder="Example: Baby Shower, Family Reunion, Church Anniversary" />
-    </div>
-
-    <div class="field">
-      <label for="otherEventName">Event / Occasion Name</label>
-      <input id="otherEventName" name="otherEventName" placeholder="Example: Johnson Family Reunion 2026" />
-    </div>
-
-    <div class="field">
-      <label for="otherThemeColors">Theme / Colors</label>
-      <input id="otherThemeColors" name="otherThemeColors" />
-    </div>
-  </div>
-
-  <div class="grid-1" style="margin-top: 14px;">
-    <div class="field">
-      <label for="otherWordingQuote">Wording / Quote</label>
-      <textarea id="otherWordingQuote" name="otherWordingQuote"></textarea>
-    </div>
-
-    <div class="field">
-      <label for="otherPhotoNotes">Photo Notes</label>
-      <textarea id="otherPhotoNotes" name="otherPhotoNotes"></textarea>
-    </div>
-
-    <div class="field">
-      <label for="otherSpecialInstructions">Special Instructions</label>
-      <textarea id="otherSpecialInstructions" name="otherSpecialInstructions" placeholder="Anything special about layout, materials, print method, deadline, or setup..."></textarea>
-    </div>
-  </div>
-</div>
           <div class="grid-1" style="margin-top: 14px;">
             <div class="field">
               <label for="referenceNotes">Reference Notes</label>
@@ -1467,11 +1431,12 @@
     }
 
     function showTypeFields() {
-      const type = orderType.value;
-      memorialFields.classList.toggle('hidden', type !== 'Memorial');
-      birthdayFields.classList.toggle('hidden', type !== 'Birthday');
-      graduationFields.classList.toggle('hidden', type !== 'Graduation');
-    }
+  const type = orderType.value;
+  memorialFields.classList.toggle('hidden', type !== 'Memorial');
+  birthdayFields.classList.toggle('hidden', type !== 'Birthday');
+  graduationFields.classList.toggle('hidden', type !== 'Graduation');
+  otherFields.classList.toggle('hidden', type !== 'Other');
+}
       function toggleGroupOrderReminder() {
         const isGroup = groupOrderSelect.value === 'Yes';
         groupOrderReminderCard.classList.toggle('hidden', !isGroup);
