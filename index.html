@@ -856,7 +856,7 @@
   </select>
 </div>
 
-<div class="field">
+<div class="field hidden" id="groupDesignNameWrap">
   <label for="groupDesignName">Group/Design Name</label>
   <input
     id="groupDesignName"
@@ -1448,8 +1448,14 @@
   otherFields.classList.toggle('hidden', type !== 'Other');
 }
       function toggleGroupOrderReminder() {
-        const isGroup = groupOrderSelect.value === 'Yes';
-        groupOrderReminderCard.classList.toggle('hidden', !isGroup);
+  const isGroup = groupOrderSelect.value === 'Yes';
+  groupOrderReminderCard.classList.toggle('hidden', !isGroup);
+
+  const groupDesignNameWrap = document.getElementById('groupDesignNameWrap');
+  if (groupDesignNameWrap) {
+    groupDesignNameWrap.classList.toggle('hidden', !isGroup);
+  }
+}
 }
     function showCustomDateLabels() {
       customDateLabelsWrap.classList.toggle('hidden', dateLabelStyle.value !== 'CUSTOM');
