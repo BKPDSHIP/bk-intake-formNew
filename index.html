@@ -989,6 +989,2650 @@ td:nth-child(5) {
               <input id="memorialThemeColors" name="memorialThemeColors" />
             </div>
             <div class="field">
+              <label for="memorialQuotePreset">Quote Preset</label>
+              <select id="memorialQuotePreset" name="memorialQuotePreset">
+                <option value="">Select Memorial Quote</option>
+                <option value="" disabled>── Line Quotes ──</option>
+                <option value="Gone But Not Forgotten">Gone But Not Forgotten</option>
+                <option value="Forever In Our Hearts">Forever In Our Hearts</option>
+                <option value="Forever In My Heart">Forever In My Heart</option>
+                <option value="Heaven Couldn't Wait">Heaven Couldn't Wait</option>
+                <option value="My Guardian Angel">My Guardian Angel</option>
+                <option value="" disabled>── Split Quotes ──</option>
+                <option value="Your Wings Was Ready|But My Heart Wasn't">Your Wings Was Ready | But My Heart Wasn't</option>
+                <option value="Gone But Not|Forgotten">Gone But Not | Forgotten</option>
+                <option value="Forever|In Our Hearts">Forever | In Our Hearts</option>
+                <option value="Forever|In My Heart">Forever | In My Heart</option>
+                <option value="Heaven|Couldn't Wait">Heaven | Couldn't Wait</option>
+                <option value="My Guardian|Angel">My Guardian | Angel</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="memorialQuote">Saying / Quote</label>
+              <textarea id="memorialQuote" name="memorialQuote"></textarea>
+            </div>
+            <div class="field">
+              <label for="memorialPhotoNotes">Photo Notes</label>
+              <textarea id="memorialPhotoNotes" name="memorialPhotoNotes" placeholder="Which photo is main, which photo should be used smaller, which ones need cleanup..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card hidden" id="birthdayFields">
+          <h2 class="section-title">Birthday Details</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="honoreeFirstName">Honoree First Name</label>
+              <input id="honoreeFirstName" name="honoreeFirstName" />
+            </div>
+            <div class="field">
+              <label for="honoreeLastName">Honoree Last Name</label>
+              <input id="honoreeLastName" name="honoreeLastName" />
+            </div>
+            <div class="field">
+              <label for="ageTurning">Age Turning</label>
+              <input id="ageTurning" name="ageTurning" />
+            </div>
+            <div class="field">
+              <label for="eventDate">Event Date</label>
+              <input id="eventDate" name="eventDate" type="date" />
+            </div>
+            <div class="field">
+              <label for="eventTime">Event Time</label>
+              <input id="eventTime" name="eventTime" placeholder="Example: 4:00 PM" />
+            </div>
+            <div class="field">
+              <label for="birthdayThemeColors">Theme / Colors</label>
+              <input id="birthdayThemeColors" name="birthdayThemeColors" />
+            </div>
+            <div class="field">
+              <label for="venueLocation">Venue / Location</label>
+              <input id="venueLocation" name="venueLocation" />
+            </div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="birthdayQuotePreset">Quote Preset</label>
+              <select id="birthdayQuotePreset" name="birthdayQuotePreset">
+                <option value="">Select Birthday Quote</option>
+                <option value="Happy [AGE_ORDINAL] Birthday">Happy [AGE_ORDINAL] Birthday</option>
+                <option value="Chapter [AGE]">Chapter [AGE]</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="birthdayWording">Wording / Saying</label>
+              <textarea id="birthdayWording" name="birthdayWording"></textarea>
+            </div>
+            <div class="field">
+              <label for="birthdayPhotoNotes">Photo Notes</label>
+              <textarea id="birthdayPhotoNotes" name="birthdayPhotoNotes"></textarea>
+            </div>
+            <div class="field">
+              <label for="outfitDressCode">Outfit / Dress Code</label>
+              <input id="outfitDressCode" name="outfitDressCode" />
+            </div>
+          </div>
+        </div>
+
+        <div class="card hidden" id="graduationFields">
+          <h2 class="section-title">Graduation Details</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="graduateFirstName">Graduate First Name</label>
+              <input id="graduateFirstName" name="graduateFirstName" />
+            </div>
+            <div class="field">
+              <label for="graduateLastName">Graduate Last Name</label>
+              <input id="graduateLastName" name="graduateLastName" />
+            </div>
+            <div class="field">
+              <label for="schoolName">School Name</label>
+              <input id="schoolName" name="schoolName" />
+            </div>
+            <div class="field">
+              <label for="classYear">Class Year</label>
+              <input id="classYear" name="classYear" />
+            </div>
+            <div class="field">
+              <label for="gradColors">Colors</label>
+              <input id="gradColors" name="gradColors" />
+            </div>
+            <div class="field">
+              <label for="degreeHonor">Degree / Honor</label>
+              <input id="degreeHonor" name="degreeHonor" />
+            </div>
+            <div class="field">
+              <label for="mascot">Mascot</label>
+              <input id="mascot" name="mascot" />
+            </div>
+            <div class="field">
+              <label for="futureSchoolCareer">Future School / Career</label>
+              <input id="futureSchoolCareer" name="futureSchoolCareer" />
+            </div>
+            <div class="field">
+              <label for="jerseyNumber">Jersey Number</label>
+              <input id="jerseyNumber" name="jerseyNumber" />
+            </div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="gradQuotePreset">Quote Preset</label>
+              <select id="gradQuotePreset" name="gradQuotePreset">
+                <option value="">Select Graduation Quote</option>
+                <option value="" disabled>── Line Quotes ──</option>
+                <option value="Congratulations">Congratulations</option>
+                <option value="I Did It">I Did It</option>
+                <option value="Class of [YEAR]">Class of [YEAR]</option>
+                <option value="Congrats [NAME]">Congrats [NAME]</option>
+                <option value="Last Lap">Last Lap</option>
+                <option value="Last Shot">Last Shot</option>
+                <option value="Graduate">Graduate</option>
+                <option value="Senior">Senior</option>
+                <option value="" disabled>── Split Quotes ──</option>
+                <option value="Class of|[YEAR]">Class of | [YEAR]</option>
+                <option value="Congrats|[NAME]">Congrats | [NAME]</option>
+                <option value="Next Chapter:|College">Next Chapter: | College</option>
+                <option value="The Tassel Was Worth|The Hassle">The Tassel Was Worth | The Hassle</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="gradWordingQuote">Wording / Quote</label>
+              <textarea id="gradWordingQuote" name="gradWordingQuote"></textarea>
+            </div>
+            <div class="field">
+              <label for="gradPhotoNotes">Photo Notes</label>
+              <textarea id="gradPhotoNotes" name="gradPhotoNotes"></textarea>
+            </div>
+          </div>
+        </div>
+<div class="card hidden" id="otherFields">
+  <h2 class="section-title">Other Details</h2>
+
+  <div class="grid">
+    <div class="field">
+      <label for="customOrderType">Custom Order Type</label>
+      <input id="customOrderType" name="customOrderType" placeholder="Example: Baby Shower, Family Reunion, Church Anniversary" />
+    </div>
+
+    <div class="field">
+      <label for="otherEventName">Event / Occasion Name</label>
+      <input id="otherEventName" name="otherEventName" placeholder="Example: Johnson Family Reunion 2026" />
+    </div>
+
+    <div class="field">
+      <label for="otherThemeColors">Theme / Colors</label>
+      <input id="otherThemeColors" name="otherThemeColors" />
+    </div>
+  </div>
+
+  <div class="grid-1" style="margin-top: 14px;">
+    <div class="field">
+      <label for="otherQuotePreset">Quote Preset</label>
+      <select id="otherQuotePreset" name="otherQuotePreset">
+        <option value="">Select Other Quote</option>
+        <option value="Welcoming Baby">Welcoming Baby</option>
+        <option value="Family Reunion">Family Reunion</option>
+        <option value="Happy Anniversary">Happy Anniversary</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="otherWordingQuote">Wording / Quote</label>
+      <textarea id="otherWordingQuote" name="otherWordingQuote"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="otherPhotoNotes">Photo Notes</label>
+      <textarea id="otherPhotoNotes" name="otherPhotoNotes"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="otherSpecialInstructions">Special Instructions</label>
+      <textarea id="otherSpecialInstructions" name="otherSpecialInstructions" placeholder="Anything special about layout, materials, print method, deadline, or setup..."></textarea>
+    </div>
+  </div>
+</div>
+        <div class="card">
+          <h2 class="section-title">Reference Information</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="imageSource">Image Source</label>
+              <select id="imageSource" name="imageSource">
+                <option value="Upload">Upload</option>
+                <option value="Google Drive">Google Drive</option>
+                <option value="Dropbox">Dropbox</option>
+                <option value="Text Message">Text Message</option>
+                <option value="Email">Email</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="uploadLink">Upload Link</label>
+              <input id="uploadLink" name="uploadLink" placeholder="Paste Dropbox, Google Drive, WeTransfer, or other file link" />
+            </div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="referenceNotes">Reference Notes</label>
+              <textarea id="referenceNotes" name="referenceNotes" placeholder="Examples: use sample 2 for layout, photo 4 is the main photo, keep same wording style as flyer example..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Confirmation</h2>
+          <div class="grid-1">
+            <div class="field">
+              <label for="confirmIntake" class="confirm-label">
+                <input id="confirmIntake" name="confirmIntake" type="checkbox" />
+                <span>I confirm that the information entered on this form is correct.</span>
+              </label>
+              <div class="hint">This box must be checked before the form can be completed.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="invoicePrintSection">
+        <div class="card invoice-print-header" id="invoiceHeaderPrint">
+          <div class="invoice-header-grid">
+            <div>
+              <div class="invoice-brand">G2G Print Shop</div>
+              <div class="invoice-sub">Custom Apparel &amp; Printing</div>
+              <div class="invoice-sub">Phone: __________________</div>
+              <div class="invoice-sub">Email: __________________</div>
+            </div>
+
+            <div class="invoice-meta">
+              <div><strong>Invoice Date:</strong> <span id="printInvoiceDate"></span></div>
+              <div><strong>Order ID:</strong> <span id="printOrderId"></span></div>
+              <div><strong>Design Code:</strong> <span id="printDesignCode"></span></div>
+              <div><strong>Client:</strong> <span id="printClientName"></span></div>
+              <div><strong>Phone:</strong> <span id="printClientPhone"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="items-head">
+            <div>
+              <h2 class="section-title" style="margin-bottom: 4px;">Invoice Items</h2>
+              <div class="hint">One design. Add all items, sizes, quantities, and prices below.</div>
+            </div>
+            <div class="no-print actions" style="margin-top:0;">
+              <button type="button" class="secondary" id="btnAddItem">Add Item</button>
+            </div>
+          </div>
+
+          <div id="itemsWrap"></div>
+
+          <div class="totals-box">
+            <div class="totals-row"><span>Subtotal</span><span id="subtotalDisplay">$0.00</span></div>
+            <div class="totals-row"><span>Tax</span><span id="taxDisplay">$0.00</span></div>
+            <div class="totals-row"><span>Total</span><span id="totalDisplay">$0.00</span></div>
+            <div class="totals-row"><span>Retainer/Payment Amount</span><span id="retainerDisplay">$0.00</span></div>
+            <div class="totals-row"><strong>Balance Due</strong><strong id="balanceDisplay">$0.00</strong></div>
+          </div>
+
+          <div class="grid-3" style="margin-top: 14px;">
+            <div class="field">
+              <label for="taxRate">Tax Rate (%)</label>
+              <input id="taxRate" name="taxRate" type="number" step="0.01" value="0" />
+            </div>
+            <div class="field">
+              <label for="paymentType">Payment Type</label>
+              <select id="paymentType" name="paymentType">
+                <option value="">Select Payment Type</option>
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+                <option value="Cash App">Cash App</option>
+                <option value="Zelle">Zelle</option>
+                <option value="Apple Pay">Apple Pay</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="retainerPaid">Retainer/Payment Amount</label>
+              <input id="retainerPaid" name="retainerPaid" type="number" step="0.01" value="0" />
+            </div>
+          </div>
+
+          <div class="invoice-payment-print-line print-only" id="invoicePaymentPrintLine"></div>
+
+          <div class="invoice-signoff">
+            <div class="sign-row">
+              <span>Customer Signature: ______________________________</span>
+            </div>
+            <div class="sign-row">
+              <span>Date: ____________________</span>
+            </div>
+            <div class="sign-row">
+              <span>Shop Rep: ______________________________</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Build JSON</h2>
+        <div class="actions">
+          <button type="button" class="primary" id="btnDownload">Download intake.json</button>
+          <button type="button" class="secondary" id="btnNewOrder">New Order</button>
+          <button type="button" class="secondary" id="btnLoad">Load intake.json</button>
+          <button type="button" class="secondary" id="btnPreview">Preview JSON</button>
+          <button type="button" class="secondary" id="btnCopy">Copy JSON</button>
+          <button type="button" class="secondary" id="btnPrint">Print Invoice</button>
+        </div>
+        <div id="errorBox" class="status error hidden"></div>
+        <div id="copyStatus" class="status hidden"></div>
+      </div>
+      <input type="file" id="jsonFileInput" accept=".json,application/json" class="hidden" />
+    </form>
+
+    <div class="card" id="jsonPreviewCard">
+      <h2 class="section-title">JSON Preview</h2>
+      <pre id="jsonPreview">{}</pre>
+    </div>
+  </div>
+
+  <template id="itemTemplate">
+    <div class="item-card">
+      <div class="item-top">
+        <div class="item-title">Item <span class="item-number"></span></div>
+        <button type="button" class="danger btnRemoveItem">Remove Item</button>
+      </div>
+
+      <div class="item-print-meta print-only"></div>
+
+      <div class="grid-4">
+        <div class="field">
+          <label>Item Type</label>
+          <select class="itemType">
+            <option value="">Select Item Type</option>
+            <option value="Full Bleed T-shirt">Full Bleed T-shirt</option>
+            <option value="Black-Out T-shirt">Black-Out T-shirt</option>
+            <option value="Center Design Sub">Center Design Sub</option>
+            <option value="Center Design Cotton">Center Design Cotton</option>
+            <option value="Socks">Socks</option>
+            <option value="Necktie">Necktie</option>
+            <option value="Stole">Stole</option>
+            <option value="20oz Skinny Tumbler">20oz Skinny Tumbler</option>
+            <option value="Yard Sign">Yard Sign</option>
+            <option value="Graduation Fan">Graduation Fan</option>
+            <option value="Back Shirt Design Full Bleed">Back Shirt Design Full Bleed</option>
+            <option value="Back Shirt Design Center Design">Back Shirt Design Center Design</option>
+            <option value="Back Shirt Design Name">Back Shirt Design Name</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="field customItemTypeWrap hidden">
+          <label>Custom Item Type</label>
+          <input class="customItemType" placeholder="Enter custom item type" />
+        </div>
+
+        <div class="field">
+          <label>Item Name</label>
+          <input class="itemName" placeholder="Example: Family Reunion Shirt" />
+        </div>
+
+        <div class="field">
+          <label>Item Notes</label>
+          <input class="itemNotes" placeholder="Front print only, same design, etc." />
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Item Details</th>
+            <th>Qty</th>
+            <th>Unit Price</th>
+            <th>Line Total</th>
+            <th class="no-print">Action</th>
+          </tr>
+        </thead>
+        <tbody class="sizesBody"></tbody>
+      </table>
+
+      <div class="actions no-print" style="margin-top: 10px;">
+        <button type="button" class="secondary btnAddSize">Add Size Row</button>
+        <button type="button" class="ghost btnAutoFillSizes">Load Shirt Size Matrix</button>
+      </div>
+    </div>
+  </template>
+
+  <template id="sizeRowTemplate">
+    <tr>
+      <td>
+        <input class="sizeName" placeholder="" />
+        <select class="sizeDropdown hidden">
+          <option value="">Select Size</option>
+          <option value="Infant 6M">Infant 6M</option>
+          <option value="Infant 12M">Infant 12M</option>
+          <option value="Infant 18M">Infant 18M</option>
+          <option value="Toddler 2T">Toddler 2T</option>
+          <option value="Toddler 3T">Toddler 3T</option>
+          <option value="Toddler 4T">Toddler 4T</option>
+          <option value="Youth XS">Youth XS</option>
+          <option value="Youth S">Youth S</option>
+          <option value="Youth M">Youth M</option>
+          <option value="Youth L">Youth L</option>
+          <option value="Youth XL">Youth XL</option>
+          <option value="Adult S">Adult S</option>
+          <option value="Adult M">Adult M</option>
+          <option value="Adult L">Adult L</option>
+          <option value="Adult XL">Adult XL</option>
+          <option value="Adult 2X">Adult 2X</option>
+          <option value="Adult 3X">Adult 3X</option>
+          <option value="Adult 4X">Adult 4X</option>
+          <option value="Adult 5X">Adult 5X</option>
+          <option value="Other">Other</option>
+        </select>
+      </td>
+      <td><input class="sizeQty" type="number" min="0" step="1" value="1" /></td>
+      <td><input class="sizePrice" type="number" min="0" step="0.01" value="0" /></td>
+      <td><span class="row-total">$0.00</span></td>
+      <td class="no-print"><button type="button" class="danger btnRemoveSize">Remove</button></td>
+    </tr>
+  </template>
+
+  <script>
+    const SHIRT_PRICE_MAP = {
+      "Full Bleed T-shirt": {
+        "Infant 6M": 25,
+        "Infant 12M": 25,
+        "Infant 18M": 25,
+        "Toddler 2T": 25,
+        "Toddler 3T": 25,
+        "Toddler 4T": 25,
+        "Youth XS": 35,
+        "Youth S": 35,
+        "Youth M": 35,
+        "Youth L": 35,
+        "Youth XL": 35,
+        "Adult S": 50,
+        "Adult M": 50,
+        "Adult L": 50,
+        "Adult XL": 50,
+        "Adult 2X": 55,
+        "Adult 3X": 55,
+        "Adult 4X": 60,
+        "Adult 5X": 60
+      },
+      "Black-Out T-shirt": {
+        "Adult S": 35,
+        "Adult M": 35,
+        "Adult L": 35,
+        "Adult XL": 35,
+        "Adult 2X": 40,
+        "Adult 3X": 40,
+        "Adult 4X": 45
+      },
+      "Center Design Sub": {
+        "Infant 6M": 17,
+        "Infant 12M": 17,
+        "Infant 18M": 17,
+        "Toddler 2T": 17,
+        "Toddler 3T": 17,
+        "Toddler 4T": 17,
+        "Youth XS": 20,
+        "Youth S": 20,
+        "Youth M": 20,
+        "Youth L": 20,
+        "Youth XL": 20,
+        "Adult S": 25,
+        "Adult M": 25,
+        "Adult L": 25,
+        "Adult XL": 25,
+        "Adult 2X": 30,
+        "Adult 3X": 30,
+        "Adult 4X": 35,
+        "Adult 5X": 40
+      },
+      "Center Design Cotton": {
+        "Infant 6M": 17,
+        "Infant 12M": 17,
+        "Infant 18M": 17,
+        "Toddler 2T": 17,
+        "Toddler 3T": 17,
+        "Toddler 4T": 17,
+        "Youth XS": 20,
+        "Youth S": 20,
+        "Youth M": 20,
+        "Youth L": 20,
+        "Youth XL": 20,
+        "Adult S": 25,
+        "Adult M": 25,
+        "Adult L": 25,
+        "Adult XL": 25,
+        "Adult 2X": 30,
+        "Adult 3X": 30,
+        "Adult 4X": 35,
+        "Adult 5X": 40
+      }
+    };
+
+    const orderType = document.getElementById('orderType');
+    const memorialFields = document.getElementById('memorialFields');
+    const birthdayFields = document.getElementById('birthdayFields');
+    const graduationFields = document.getElementById('graduationFields');
+    const otherFields = document.getElementById('otherFields');
+    const dateLabelStyle = document.getElementById('dateLabelStyle');
+    const customDateLabelsWrap = document.getElementById('customDateLabelsWrap');
+    const errorBox = document.getElementById('errorBox');
+    const copyStatus = document.getElementById('copyStatus');
+    const jsonPreview = document.getElementById('jsonPreview');
+    const itemsWrap = document.getElementById('itemsWrap');
+    const itemTemplate = document.getElementById('itemTemplate');
+    const sizeRowTemplate = document.getElementById('sizeRowTemplate');  
+    const groupOrderSelect = document.getElementById('groupOrder');
+    const groupOrderReminderCard = document.getElementById('groupOrderReminderCard');
+    const jsonFileInput = document.getElementById('jsonFileInput');
+    
+    function setHidden(el, hidden) {
+      el.classList.toggle('hidden', hidden);
+    }
+
+    function setStatus(el, kind, text) {
+      el.className = `status ${kind}`;
+      el.textContent = text;
+      setHidden(el, false);
+    }
+
+    function clearStatus(el) {
+      el.textContent = '';
+      el.className = 'status hidden';
+    }
+
+    function showTypeFields() {
+  const type = orderType.value;
+  memorialFields.classList.toggle('hidden', type !== 'Memorial');
+  birthdayFields.classList.toggle('hidden', type !== 'Birthday');
+  graduationFields.classList.toggle('hidden', type !== 'Graduation');
+  otherFields.classList.toggle('hidden', type !== 'Other');
+}
+     function toggleGroupOrderReminder() {
+  const isGroup = groupOrderSelect.value === 'Yes';
+
+  groupOrderReminderCard.classList.toggle('hidden', !isGroup);
+
+  const groupDesignNameWrap = document.getElementById('groupDesignNameWrap');
+  const groupDesignName = document.getElementById('groupDesignName');
+
+  if (groupDesignNameWrap) {
+    groupDesignNameWrap.classList.toggle('hidden', !isGroup);
+    groupDesignNameWrap.style.display = isGroup ? '' : 'none';
+  }
+
+  if (!isGroup && groupDesignName) {
+    groupDesignName.value = '';
+  }
+}
+    function showCustomDateLabels() {
+      customDateLabelsWrap.classList.toggle('hidden', dateLabelStyle.value !== 'CUSTOM');
+    }
+
+    function updateMemorialDateLabels() {
+      const style = document.getElementById('dateLabelStyle').value;
+      const label1 = document.getElementById('dateFieldLabel1');
+      const label2 = document.getElementById('dateFieldLabel2');
+      const custom1 = document.getElementById('customLabel1').value.trim();
+      const custom2 = document.getElementById('customLabel2').value.trim();
+
+      if (style === 'DOB_DOD') {
+        label1.textContent = 'Date of Birth';
+        label2.textContent = 'Date of Death';
+      } else if (style === 'SUNRISE_SUNSET') {
+        label1.textContent = 'Sunrise';
+        label2.textContent = 'Sunset';
+      } else if (style === 'ALPHA_OMEGA') {
+        label1.textContent = 'Alpha';
+        label2.textContent = 'Omega';
+      } else if (style === 'CUSTOM') {
+        label1.textContent = custom1 || 'Custom Date 1';
+        label2.textContent = custom2 || 'Custom Date 2';
+      }
+    }
+
+    function updatePrintHeader() {
+      const invoiceDate = document.getElementById('invoiceDate')?.value || '';
+      const orderId = document.getElementById('orderId')?.value || '';
+      const designCode = document.getElementById('designCode')?.value || '';
+      const clientName = document.getElementById('clientName')?.value || '';
+      const clientPhone = document.getElementById('clientPhone')?.value || '';
+
+      const invoiceDateEl = document.getElementById('printInvoiceDate');
+      const orderIdEl = document.getElementById('printOrderId');
+      const designCodeEl = document.getElementById('printDesignCode');
+      const clientNameEl = document.getElementById('printClientName');
+      const clientPhoneEl = document.getElementById('printClientPhone');
+
+      if (invoiceDateEl) invoiceDateEl.textContent = invoiceDate;
+      if (orderIdEl) orderIdEl.textContent = orderId;
+      if (designCodeEl) designCodeEl.textContent = designCode;
+      if (clientNameEl) clientNameEl.textContent = clientName;
+      if (clientPhoneEl) clientPhoneEl.textContent = clientPhone;
+
+      updatePaymentPrintLine();
+    }
+
+    function updatePaymentPrintLine() {
+      const taxRate = document.getElementById('taxRate')?.value || '0';
+      const paymentType = document.getElementById('paymentType')?.value || '—';
+      const retainerPaid = document.getElementById('retainerPaid')?.value || '0';
+      const line = document.getElementById('invoicePaymentPrintLine');
+      if (!line) return;
+      line.innerHTML = `<strong>Tax Rate (%):</strong> ${taxRate} | <strong>Payment Type:</strong> ${paymentType} | <strong>Retainer/Payment Amount:</strong> ${retainerPaid}`;
+    }
+
+    function val(id) {
+      const el = document.getElementById(id);
+      return el ? String(el.value || '').trim() : '';
+    }
+
+    function numVal(value) {
+      const n = parseFloat(String(value || '').trim());
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function money(n) {
+      return `$${Number(n || 0).toFixed(2)}`;
+    }
+
+    function parseAnyDateParts(value) {
+      const raw = String(value || '').trim();
+      if (!raw) return null;
+
+      let m = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (m) return { year: Number(m[1]), month: Number(m[2]), day: Number(m[3]) };
+
+      m = raw.match(/^(\d{4})\/(\d{2})\/(\d{2})$/);
+      if (m) return { year: Number(m[1]), month: Number(m[2]), day: Number(m[3]) };
+
+      m = raw.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2})$/);
+      if (m) return { year: 2000 + Number(m[3]), month: Number(m[1]), day: Number(m[2]) };
+
+      m = raw.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+      if (m) return { year: Number(m[3]), month: Number(m[1]), day: Number(m[2]) };
+
+      const parsed = new Date(raw);
+      if (!Number.isNaN(parsed.getTime())) {
+        return {
+          year: parsed.getFullYear(),
+          month: parsed.getMonth() + 1,
+          day: parsed.getDate()
+        };
+      }
+
+      return null;
+    }
+
+    function formatMemorialDate(value, format) {
+      const parts = parseAnyDateParts(value);
+      if (!parts) return String(value || '').trim();
+
+      const { year, month, day } = parts;
+      const yy = String(year).slice(-2);
+      const monthName = new Date(year, month - 1, day).toLocaleDateString('en-US', {
+        month: 'long'
+      });
+
+      switch (format) {
+        case 'M/D/YYYY':
+          return `${month}/${day}/${year}`;
+        case 'M-D-YY':
+          return `${month}-${day}-${yy}`;
+        case 'M-D-YYYY':
+          return `${month}-${day}-${year}`;
+        case 'MONTH_D_COMMA_YYYY':
+          return `${monthName} ${day}, ${year}`;
+        case 'M/D/YY':
+        default:
+          return `${month}/${day}/${yy}`;
+      }
+    }
+
+    function formatDateForInput(value) {
+      const parts = parseAnyDateParts(value);
+      if (!parts) return String(value || '').trim();
+      const { year, month, day } = parts;
+      return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    }
+
+    function requireFields(errors, pairs) {
+      for (const [value, label] of pairs) {
+        if (!String(value || '').trim()) errors.push(label + ' is required.');
+      }
+    }
+
+    function fullName(first, last) {
+      return [String(first || '').trim(), String(last || '').trim()].filter(Boolean).join(' ');
+    }
+
+    function toOrdinal(value) {
+      const n = parseInt(String(value || '').trim(), 10);
+      if (!Number.isFinite(n)) return String(value || '').trim();
+      const mod10 = n % 10;
+      const mod100 = n % 100;
+      if (mod10 === 1 && mod100 !== 11) return `${n}st`;
+      if (mod10 === 2 && mod100 !== 12) return `${n}nd`;
+      if (mod10 === 3 && mod100 !== 13) return `${n}rd`;
+      return `${n}th`;
+    }
+
+    function getPresetName(firstId, lastId) {
+      return fullName(val(firstId), val(lastId)) || val(firstId) || val(lastId) || '[NAME]';
+    }
+
+    function resolveQuoteTemplate(template, type) {
+      let text = String(template || '').trim();
+      if (!text) return '';
+
+      if (type === 'Birthday') {
+        text = text.replaceAll('[AGE_ORDINAL]', toOrdinal(val('ageTurning')) || '[AGE_ORDINAL]');
+        text = text.replaceAll('[AGE]', val('ageTurning') || '[AGE]');
+      }
+
+      if (type === 'Graduation') {
+        text = text.replaceAll('[YEAR]', val('classYear') || '[YEAR]');
+        text = text.replaceAll('[NAME]', getPresetName('graduateFirstName', 'graduateLastName'));
+      }
+
+      return text;
+    }
+
+    function applyQuotePreset(selectId, textareaId, type) {
+      const selectEl = document.getElementById(selectId);
+      const textareaEl = document.getElementById(textareaId);
+      if (!selectEl || !textareaEl) return;
+
+      const template = selectEl.value.trim();
+      if (!template) {
+        textareaEl.dataset.presetTemplate = '';
+        textareaEl.dataset.autoFilled = 'false';
+        return;
+      }
+
+      textareaEl.value = resolveQuoteTemplate(template, type);
+      textareaEl.dataset.presetTemplate = template;
+      textareaEl.dataset.autoFilled = 'true';
+      renderPreview();
+      updatePrintHeader();
+    }
+
+    function refreshAutoQuote(selectId, textareaId, type) {
+      const selectEl = document.getElementById(selectId);
+      const textareaEl = document.getElementById(textareaId);
+      if (!selectEl || !textareaEl) return;
+
+      const template = textareaEl.dataset.presetTemplate || selectEl.value.trim();
+      if (!template) return;
+      if (textareaEl.dataset.autoFilled !== 'true') return;
+
+      textareaEl.value = resolveQuoteTemplate(template, type);
+    }
+
+    function matchPresetToTextarea(selectId, textareaId, type) {
+      const selectEl = document.getElementById(selectId);
+      const textareaEl = document.getElementById(textareaId);
+      if (!selectEl || !textareaEl) return;
+
+      const currentText = textareaEl.value.trim();
+      let matched = false;
+
+      Array.from(selectEl.options).forEach(option => {
+        if (matched || option.disabled || !option.value) return;
+        if (resolveQuoteTemplate(option.value, type) === currentText) {
+          selectEl.value = option.value;
+          textareaEl.dataset.presetTemplate = option.value;
+          textareaEl.dataset.autoFilled = 'true';
+          matched = true;
+        }
+      });
+
+      if (!matched) {
+        selectEl.value = '';
+        textareaEl.dataset.presetTemplate = '';
+        textareaEl.dataset.autoFilled = 'false';
+      }
+    }
+
+    function bindQuotePreset(selectId, textareaId, type) {
+      const selectEl = document.getElementById(selectId);
+      const textareaEl = document.getElementById(textareaId);
+      if (!selectEl || !textareaEl) return;
+
+      selectEl.addEventListener('change', () => applyQuotePreset(selectId, textareaId, type));
+      textareaEl.addEventListener('input', () => {
+        const currentResolved = resolveQuoteTemplate(textareaEl.dataset.presetTemplate || '', type);
+        if (textareaEl.value.trim() !== currentResolved.trim()) {
+          textareaEl.dataset.autoFilled = 'false';
+        }
+      });
+    }
+
+    function isShirtType(itemType) {
+      return [
+        'Full Bleed T-shirt',
+        'Black-Out T-shirt',
+        'Center Design Sub',
+        'Center Design Cotton'
+      ].includes(itemType);
+    }
+
+    function getAutoPrice(itemType, size) {
+      if (!itemType || !size) return null;
+      if (size === 'Other') return null;
+      const typePrices = SHIRT_PRICE_MAP[itemType];
+      if (!typePrices) return null;
+      return Object.prototype.hasOwnProperty.call(typePrices, size) ? typePrices[size] : null;
+    }
+
+    function getCardFinalItemType(itemCard) {
+      const itemTypeSelect = itemCard.querySelector('.itemType').value.trim();
+      const customItemType = (itemCard.querySelector('.customItemType')?.value || '').trim();
+      return itemTypeSelect === 'Other' ? customItemType : itemTypeSelect;
+    }
+
+    function updateAutoPrices(itemCard) {
+      const itemType = getCardFinalItemType(itemCard);
+
+      itemCard.querySelectorAll('.sizesBody tr').forEach(row => {
+        const textInput = row.querySelector('.sizeName');
+        const dropdown = row.querySelector('.sizeDropdown');
+        const priceInput = row.querySelector('.sizePrice');
+
+        const size = !dropdown.classList.contains('hidden')
+          ? dropdown.value.trim()
+          : textInput.value.trim();
+
+        const autoPrice = getAutoPrice(itemType, size);
+
+        if (autoPrice !== null) {
+          priceInput.value = autoPrice;
+        }
+      });
+
+      updateTotals();
+    }
+
+    function updateSizeInputMode(itemCard) {
+      const selectedType = getCardFinalItemType(itemCard);
+      const useDropdown = isShirtType(selectedType);
+
+      itemCard.querySelectorAll('.sizesBody tr').forEach(row => {
+        const textInput = row.querySelector('.sizeName');
+        const dropdown = row.querySelector('.sizeDropdown');
+
+        if (useDropdown) {
+          dropdown.classList.remove('hidden');
+          textInput.classList.add('hidden');
+          if (textInput.value && !dropdown.value) {
+            dropdown.value = textInput.value;
+          }
+        } else {
+          dropdown.classList.add('hidden');
+          textInput.classList.remove('hidden');
+          if (dropdown.value && !textInput.value) {
+            textInput.value = dropdown.value;
+          }
+        }
+      });
+
+      updateAutoPrices(itemCard);
+      updateTotals();
+    }
+
+    function addSizeRow(itemCard, sizeName = '', qty = 1, price = 0) {
+      const frag = sizeRowTemplate.content.cloneNode(true);
+      const row = frag.querySelector('tr');
+
+      const textInput = row.querySelector('.sizeName');
+      const dropdown = row.querySelector('.sizeDropdown');
+
+      textInput.value = sizeName;
+      dropdown.value = sizeName;
+
+      row.querySelector('.sizeQty').value = qty;
+      row.querySelector('.sizePrice').value = price;
+
+      row.querySelector('.btnRemoveSize').addEventListener('click', () => {
+        row.remove();
+        updateTotals();
+      });
+
+      row.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', () => {
+          updateAutoPrices(itemCard);
+          updateTotals();
+        });
+        input.addEventListener('change', () => {
+          updateAutoPrices(itemCard);
+          updateTotals();
+        });
+      });
+
+      itemCard.querySelector('.sizesBody').appendChild(row);
+      updateSizeInputMode(itemCard);
+      updateTotals();
+    }
+
+    function autoFillShirtSizes(itemCard) {
+      const finalType = getCardFinalItemType(itemCard);
+      if (!isShirtType(finalType)) return;
+
+      const shirtSizes = [
+        "Infant 6M",
+        "Infant 12M",
+        "Infant 18M",
+        "Toddler 2T",
+        "Toddler 3T",
+        "Toddler 4T",
+        "Youth XS",
+        "Youth S",
+        "Youth M",
+        "Youth L",
+        "Youth XL",
+        "Adult S",
+        "Adult M",
+        "Adult L",
+        "Adult XL",
+        "Adult 2X",
+        "Adult 3X",
+        "Adult 4X",
+        "Adult 5X",
+        "Other"
+      ];
+
+      const body = itemCard.querySelector('.sizesBody');
+      body.innerHTML = '';
+
+      shirtSizes.forEach(size => {
+        addSizeRow(itemCard, size, 0, 0);
+      });
+
+      updateTotals();
+    }
+
+
+    function buildItemPrintMeta(card) {
+      const itemType = getCardFinalItemType(card) || '—';
+      const itemName = card.querySelector('.itemName')?.value.trim() || '—';
+      const itemNotes = card.querySelector('.itemNotes')?.value.trim() || '—';
+      const meta = card.querySelector('.item-print-meta');
+      if (!meta) return;
+      meta.innerHTML = `<strong>Type:</strong> ${itemType} | <strong>Name:</strong> ${itemName} | <strong>Notes:</strong> ${itemNotes}`;
+    }
+
+    function updateAllItemPrintMeta() {
+      Array.from(itemsWrap.querySelectorAll('.item-card')).forEach(buildItemPrintMeta);
+    }
+
+    function refreshItemNumbers() {
+      Array.from(itemsWrap.querySelectorAll('.item-card')).forEach((card, index) => {
+        card.querySelector('.item-number').textContent = index + 1;
+        buildItemPrintMeta(card);
+      });
+    }
+
+    function bindItemTypeToggle(card) {
+      const itemTypeSelect = card.querySelector('.itemType');
+      const customWrap = card.querySelector('.customItemTypeWrap');
+      const customInput = card.querySelector('.customItemType');
+
+      function updateCustomVisibility() {
+        const isOther = itemTypeSelect.value === 'Other';
+        customWrap.classList.toggle('hidden', !isOther);
+        if (!isOther) customInput.value = '';
+        updateSizeInputMode(card);
+        updateTotals();
+      }
+
+      itemTypeSelect.addEventListener('change', updateCustomVisibility);
+      customInput.addEventListener('input', () => {
+        updateSizeInputMode(card);
+        updateTotals();
+      });
+
+      updateCustomVisibility();
+    }
+
+    function addItem() {
+      const frag = itemTemplate.content.cloneNode(true);
+      const card = frag.querySelector('.item-card');
+
+      card.querySelector('.btnRemoveItem').addEventListener('click', () => {
+        card.remove();
+        refreshItemNumbers();
+        updateTotals();
+      });
+
+      card.querySelector('.btnAddSize').addEventListener('click', () => addSizeRow(card));
+      card.querySelector('.btnAutoFillSizes').addEventListener('click', () => autoFillShirtSizes(card));
+
+      card.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', updateTotals);
+        input.addEventListener('change', updateTotals);
+      });
+
+      itemsWrap.appendChild(card);
+      bindItemTypeToggle(card);
+      addSizeRow(card);
+      buildItemPrintMeta(card);
+      refreshItemNumbers();
+      updateTotals();
+    }
+
+    function collectItems() {
+      const items = [];
+      const cards = Array.from(itemsWrap.querySelectorAll('.item-card'));
+
+      cards.forEach(card => {
+        const itemType = getCardFinalItemType(card);
+        const itemName = card.querySelector('.itemName').value.trim();
+        const itemNotes = card.querySelector('.itemNotes').value.trim();
+
+        const rows = Array.from(card.querySelectorAll('.sizesBody tr'));
+        const sizes = [];
+        let itemTotal = 0;
+
+        rows.forEach(row => {
+          const textInput = row.querySelector('.sizeName');
+          const dropdown = row.querySelector('.sizeDropdown');
+          const size = !dropdown.classList.contains('hidden')
+            ? dropdown.value.trim()
+            : textInput.value.trim();
+
+          const qty = numVal(row.querySelector('.sizeQty').value);
+          const price = numVal(row.querySelector('.sizePrice').value);
+          const total = qty * price;
+
+          row.querySelector('.row-total').textContent = money(total);
+
+          if (!size && !qty && !price) return;
+
+          sizes.push({
+            size,
+            qty,
+            unitPrice: price,
+            total
+          });
+
+          itemTotal += total;
+        });
+
+        if (!itemType && !itemName && !itemNotes && sizes.length === 0) return;
+
+        items.push({
+          itemType,
+          itemName,
+          notes: itemNotes,
+          sizes,
+          itemTotal
+        });
+      });
+
+      return items;
+    }
+
+    function updateTotals() {
+      const items = collectItems();
+      const subtotal = items.reduce((sum, item) => sum + item.itemTotal, 0);
+      const taxRate = numVal(document.getElementById('taxRate').value);
+      const retainerPaid = numVal(document.getElementById('retainerPaid').value);
+      const tax = subtotal * (taxRate / 100);
+      const total = subtotal + tax;
+      const balance = total - retainerPaid;
+
+      document.getElementById('subtotalDisplay').textContent = money(subtotal);
+      document.getElementById('taxDisplay').textContent = money(tax);
+      document.getElementById('totalDisplay').textContent = money(total);
+      document.getElementById('retainerDisplay').textContent = money(retainerPaid);
+      document.getElementById('balanceDisplay').textContent = money(balance);
+      updateAllItemPrintMeta();
+    }
+
+    function buildIntakeObject() {
+      const type = val('orderType');
+      const errors = [];
+
+      requireFields(errors, [
+        [val('clientName'), 'Client Name'],
+        [type, 'Order Type'],
+        [val('dueDate'), 'Due Date'],
+        [val('designDirectionNotes'), 'Design Direction Notes']
+      ]);
+
+   if (val('groupOrder') === 'Yes') {
+     requireFields(errors, [
+    [val('groupDesignName'), 'Group/Design Name']
+  ]);
+}
+      const intake = {
+        orderId: val('orderId'),
+        designCode: val('designCode'),
+        orderIdDesignCode: [val('orderId'), val('designCode')].filter(Boolean).join(' | '),
+        invoiceDate: val('invoiceDate'),
+        groupOrder: val('groupOrder'),
+        client: {
+          name: val('clientName'),
+          phone: val('clientPhone'),
+          email: val('clientEmail')
+        },
+        order: {
+          orderType: type,
+        dueDate: val('dueDate'),
+        designCode: val('designCode'),
+        groupDesignName: val('groupDesignName'),
+        designDirectionNotes: val('designDirectionNotes')
+},
+
+        references: {
+          imageSource: val('imageSource'),
+          uploadLink: val('uploadLink'),
+          notes: val('referenceNotes')
+        },
+        details: {},
+        productionItems: collectItems(),
+        invoice: {}
+      };
+
+      const subtotal = intake.productionItems.reduce((sum, item) => sum + item.itemTotal, 0);
+      const taxRate = numVal(val('taxRate'));
+      const tax = subtotal * (taxRate / 100);
+      const total = subtotal + tax;
+      const retainerPaid = numVal(val('retainerPaid'));
+      const balanceDue = total - retainerPaid;
+
+      intake.invoice = {
+        subtotal,
+        taxRate,
+        paymentType: val('paymentType'),
+        tax,
+        total,
+        retainerPaymentAmount: retainerPaid,
+        retainerPaid,
+        balanceDue
+      };
+
+      if (intake.productionItems.length === 0) {
+        errors.push('At least one invoice item is required.');
+      }
+
+      if (type === 'Memorial') {
+        requireFields(errors, [
+          [val('deceasedFirstName'), 'Memorial: Deceased First Name'],
+          [val('deceasedLastName'), 'Memorial: Deceased Last Name'],
+          [val('sunriseDate'), 'Memorial: First Date'],
+          [val('sunsetDate'), 'Memorial: Second Date'],
+          [val('memorialThemeColors'), 'Memorial: Theme / Colors'],
+          [val('memorialQuote'), 'Memorial: Saying / Quote'],
+          [val('memorialPhotoNotes'), 'Memorial: Photo Notes']
+        ]);
+
+        if (val('dateLabelStyle') === 'CUSTOM') {
+          requireFields(errors, [
+            [val('customLabel1'), 'Memorial: Custom Label 1'],
+            [val('customLabel2'), 'Memorial: Custom Label 2']
+          ]);
+        }
+
+        intake.details.memorial = {
+          deceasedFirstName: val('deceasedFirstName'),
+          deceasedLastName: val('deceasedLastName'),
+          deceasedName: fullName(val('deceasedFirstName'), val('deceasedLastName')),
+          dateLabelStyle: val('dateLabelStyle') || 'DOB_DOD',
+          dateOutputFormat: val('memorialDateFormat') || 'M/D/YY',
+          sunriseDate: formatMemorialDate(val('sunriseDate'), val('memorialDateFormat') || 'M/D/YY'),
+          sunsetDate: formatMemorialDate(val('sunsetDate'), val('memorialDateFormat') || 'M/D/YY'),
+          customDateLabels: {
+            label1: val('customLabel1'),
+            label2: val('customLabel2')
+          },
+          themeColors: val('memorialThemeColors'),
+          quote: val('memorialQuote'),
+          photoNotes: val('memorialPhotoNotes')
+        };
+      }
+
+      if (type === 'Birthday') {
+        requireFields(errors, [
+          [val('honoreeFirstName'), 'Birthday: Honoree First Name'],
+          [val('honoreeLastName'), 'Birthday: Honoree Last Name'],
+          [val('ageTurning'), 'Birthday: Age Turning'],
+          [val('eventDate'), 'Birthday: Event Date'],
+          [val('birthdayThemeColors'), 'Birthday: Theme / Colors'],
+          [val('birthdayWording'), 'Birthday: Wording / Saying'],
+          [val('birthdayPhotoNotes'), 'Birthday: Photo Notes']
+        ]);
+
+        intake.details.birthday = {
+          honoreeFirstName: val('honoreeFirstName'),
+          honoreeLastName: val('honoreeLastName'),
+          honoreeName: fullName(val('honoreeFirstName'), val('honoreeLastName')),
+          ageTurning: val('ageTurning'),
+          eventDate: val('eventDate'),
+          eventTime: val('eventTime'),
+          themeColors: val('birthdayThemeColors'),
+          wording: val('birthdayWording'),
+          photoNotes: val('birthdayPhotoNotes'),
+          venueLocation: val('venueLocation'),
+          outfitDressCode: val('outfitDressCode')
+        };
+      }
+
+      if (type === 'Graduation') {
+        requireFields(errors, [
+          [val('graduateFirstName'), 'Graduation: Graduate First Name'],
+          [val('graduateLastName'), 'Graduation: Graduate Last Name'],
+          [val('schoolName'), 'Graduation: School Name'],
+          [val('classYear'), 'Graduation: Class Year'],
+          [val('gradColors'), 'Graduation: Colors'],
+          [val('gradWordingQuote'), 'Graduation: Wording / Quote']
+        ]);
+
+        intake.details.graduation = {
+          graduateFirstName: val('graduateFirstName'),
+          graduateLastName: val('graduateLastName'),
+          graduateName: fullName(val('graduateFirstName'), val('graduateLastName')),
+          schoolName: val('schoolName'),
+          classYear: val('classYear'),
+          colors: val('gradColors'),
+          wordingQuote: val('gradWordingQuote'),
+          photoNotes: val('gradPhotoNotes'),
+          degreeHonor: val('degreeHonor'),
+          mascot: val('mascot'),
+          futureSchoolCareer: val('futureSchoolCareer'),
+          jerseyNumber: val('jerseyNumber')
+        };
+      }
+     
+      if (type === 'Other') {
+      requireFields(errors, [
+      [val('customOrderType'), 'Other: Custom Order Type'],
+      [val('otherEventName'), 'Other: Event / Occasion Name'],
+      [val('otherThemeColors'), 'Other: Theme / Colors'],
+      [val('otherWordingQuote'), 'Other: Wording / Quote']
+    ]);
+
+  intake.details.other = {
+    customOrderType: val('customOrderType'),
+    eventName: val('otherEventName'),
+    themeColors: val('otherThemeColors'),
+    wordingQuote: val('otherWordingQuote'),
+    photoNotes: val('otherPhotoNotes'),
+    specialInstructions: val('otherSpecialInstructions')
+  };
+}
+  
+      if (!document.getElementById('confirmIntake')?.checked) {
+        errors.push('Please confirm that the information entered on the form is correct.');
+      }
+
+      return { intake, errors };
+    }
+
+    function renderPreview() {
+      const { intake, errors } = buildIntakeObject();
+      jsonPreview.textContent = JSON.stringify(intake, null, 2);
+      if (errors.length) {
+        setStatus(errorBox, 'error', errors.join('\n'));
+      } else {
+        clearStatus(errorBox);
+      }
+      updateTotals();
+      return { intake, errors };
+    }
+
+
+    function setFieldValue(id, value = '') {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      if (el.type === 'checkbox') {
+        el.checked = Boolean(value);
+      } else {
+        el.value = value ?? '';
+      }
+    }
+
+    function clearDetailFields() {
+      [
+        'deceasedFirstName', 'deceasedLastName', 'dateLabelStyle', 'memorialDateFormat', 'sunriseDate', 'sunsetDate',
+        'customLabel1', 'customLabel2', 'memorialThemeColors', 'memorialQuotePreset', 'memorialQuote', 'memorialPhotoNotes',
+        'honoreeFirstName', 'honoreeLastName', 'ageTurning', 'eventDate', 'eventTime',
+        'birthdayThemeColors', 'venueLocation', 'birthdayQuotePreset', 'birthdayWording', 'birthdayPhotoNotes', 'outfitDressCode',
+        'graduateFirstName', 'graduateLastName', 'schoolName', 'classYear', 'gradColors',
+        'degreeHonor', 'mascot', 'futureSchoolCareer', 'jerseyNumber', 'gradQuotePreset', 'gradWordingQuote', 'gradPhotoNotes',
+        'customOrderType', 'otherEventName', 'otherThemeColors', 'otherQuotePreset', 'otherWordingQuote', 'otherPhotoNotes',
+        'otherSpecialInstructions'
+      ].forEach(id => setFieldValue(id, ''));
+    }
+
+    function loadItemsFromJson(items = []) {
+      itemsWrap.innerHTML = '';
+
+      if (!items.length) {
+        addItem();
+        return;
+      }
+
+      items.forEach(item => {
+        addItem();
+
+        const card = itemsWrap.lastElementChild;
+        const itemTypeSelect = card.querySelector('.itemType');
+        const customItemType = card.querySelector('.customItemType');
+        const itemName = card.querySelector('.itemName');
+        const itemNotes = card.querySelector('.itemNotes');
+        const sizesBody = card.querySelector('.sizesBody');
+
+        const itemTypeValue = item?.itemType || '';
+        const hasOption = Array.from(itemTypeSelect.options).some(opt => opt.value === itemTypeValue);
+
+        if (hasOption) {
+          itemTypeSelect.value = itemTypeValue;
+        } else if (itemTypeValue) {
+          itemTypeSelect.value = 'Other';
+          customItemType.value = itemTypeValue;
+        } else {
+          itemTypeSelect.value = '';
+        }
+
+        itemTypeSelect.dispatchEvent(new Event('change'));
+
+        itemName.value = item?.itemName || '';
+        itemNotes.value = item?.notes || '';
+        sizesBody.innerHTML = '';
+
+        if (Array.isArray(item?.sizes) && item.sizes.length) {
+          item.sizes.forEach(row => {
+            addSizeRow(card, row?.size || '', row?.qty ?? 0, row?.unitPrice ?? 0);
+          });
+        } else {
+          addSizeRow(card);
+        }
+
+        buildItemPrintMeta(card);
+      });
+
+      refreshItemNumbers();
+      updateTotals();
+    }
+
+    async function loadIntakeJsonFile(file) {
+      try {
+        const text = await file.text();
+        const intake = JSON.parse(text);
+
+        setFieldValue('clientName', intake.client?.name || '');
+        setFieldValue('clientPhone', intake.client?.phone || '');
+        setFieldValue('clientEmail', intake.client?.email || '');
+
+        setFieldValue('orderId', intake.orderId || '');
+        setFieldValue('designCode', intake.order?.designCode || intake.designCode || '');
+        setFieldValue('invoiceDate', intake.invoiceDate || '');
+        setFieldValue('groupOrder', intake.groupOrder || 'No');
+
+        setFieldValue('orderType', intake.order?.orderType || '');
+        setFieldValue('dueDate', intake.order?.dueDate || '');
+        setFieldValue('groupDesignName', intake.order?.groupDesignName || '');
+        setFieldValue('designDirectionNotes', intake.order?.designDirectionNotes || '');
+
+        setFieldValue('imageSource', intake.references?.imageSource || 'Upload');
+        setFieldValue('uploadLink', intake.references?.uploadLink || '');
+        setFieldValue('referenceNotes', intake.references?.notes || '');
+
+        setFieldValue('taxRate', intake.invoice?.taxRate ?? 0);
+        setFieldValue('paymentType', intake.invoice?.paymentType || '');
+        setFieldValue('retainerPaid', intake.invoice?.retainerPaid ?? intake.invoice?.retainerPaymentAmount ?? 0);
+        setFieldValue('confirmIntake', true);
+
+        clearDetailFields();
+
+        const memorial = intake.details?.memorial || {};
+        setFieldValue('deceasedFirstName', memorial.deceasedFirstName || '');
+        setFieldValue('deceasedLastName', memorial.deceasedLastName || '');
+        setFieldValue('dateLabelStyle', memorial.dateLabelStyle || 'DOB_DOD');
+        setFieldValue('memorialDateFormat', memorial.dateOutputFormat || 'M/D/YY');
+        setFieldValue('sunriseDate', formatDateForInput(memorial.sunriseDate || ''));
+        setFieldValue('sunsetDate', formatDateForInput(memorial.sunsetDate || ''));
+        setFieldValue('customLabel1', memorial.customDateLabels?.label1 || '');
+        setFieldValue('customLabel2', memorial.customDateLabels?.label2 || '');
+        setFieldValue('memorialThemeColors', memorial.themeColors || '');
+        setFieldValue('memorialQuote', memorial.quote || '');
+        setFieldValue('memorialPhotoNotes', memorial.photoNotes || '');
+
+        const birthday = intake.details?.birthday || {};
+        setFieldValue('honoreeFirstName', birthday.honoreeFirstName || '');
+        setFieldValue('honoreeLastName', birthday.honoreeLastName || '');
+        setFieldValue('ageTurning', birthday.ageTurning || '');
+        setFieldValue('eventDate', birthday.eventDate || '');
+        setFieldValue('eventTime', birthday.eventTime || '');
+        setFieldValue('birthdayThemeColors', birthday.themeColors || '');
+        setFieldValue('venueLocation', birthday.venueLocation || '');
+        setFieldValue('birthdayWording', birthday.wording || '');
+        setFieldValue('birthdayPhotoNotes', birthday.photoNotes || '');
+        setFieldValue('outfitDressCode', birthday.outfitDressCode || '');
+
+        const graduation = intake.details?.graduation || {};
+        setFieldValue('graduateFirstName', graduation.graduateFirstName || '');
+        setFieldValue('graduateLastName', graduation.graduateLastName || '');
+        setFieldValue('schoolName', graduation.schoolName || '');
+        setFieldValue('classYear', graduation.classYear || '');
+        setFieldValue('gradColors', graduation.colors || '');
+        setFieldValue('degreeHonor', graduation.degreeHonor || '');
+        setFieldValue('mascot', graduation.mascot || '');
+        setFieldValue('futureSchoolCareer', graduation.futureSchoolCareer || '');
+        setFieldValue('jerseyNumber', graduation.jerseyNumber || '');
+        setFieldValue('gradWordingQuote', graduation.wordingQuote || '');
+        setFieldValue('gradPhotoNotes', graduation.photoNotes || '');
+
+        const other = intake.details?.other || {};
+        setFieldValue('customOrderType', other.customOrderType || '');
+        setFieldValue('otherEventName', other.eventName || '');
+        setFieldValue('otherThemeColors', other.themeColors || '');
+        setFieldValue('otherWordingQuote', other.wordingQuote || '');
+        setFieldValue('otherPhotoNotes', other.photoNotes || '');
+        setFieldValue('otherSpecialInstructions', other.specialInstructions || '');
+
+        matchPresetToTextarea('memorialQuotePreset', 'memorialQuote', 'Memorial');
+        matchPresetToTextarea('birthdayQuotePreset', 'birthdayWording', 'Birthday');
+        matchPresetToTextarea('gradQuotePreset', 'gradWordingQuote', 'Graduation');
+        matchPresetToTextarea('otherQuotePreset', 'otherWordingQuote', 'Other');
+
+        loadItemsFromJson(intake.productionItems || []);
+
+        showTypeFields();
+        toggleGroupOrderReminder();
+        showCustomDateLabels();
+        updateMemorialDateLabels();
+        updatePrintHeader();
+        renderPreview();
+
+        clearStatus(errorBox);
+        setStatus(copyStatus, 'success', 'Order loaded from JSON.');
+      } catch (err) {
+        console.error(err);
+        setStatus(errorBox, 'error', 'Could not load JSON. Please choose a valid intake.json file.');
+      }
+    }
+
+
+
+    function resetFormForNewOrder() {
+      document.getElementById('intakeForm').reset();
+
+      clearDetailFields();
+      itemsWrap.innerHTML = '';
+
+      ['memorialQuote', 'birthdayWording', 'gradWordingQuote', 'otherWordingQuote'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.dataset.presetTemplate = '';
+          el.dataset.autoFilled = 'false';
+        }
+      });
+
+      document.getElementById('orderId').value = '';
+      document.getElementById('designCode').value = '';
+      document.getElementById('invoiceDate').value = new Date().toISOString().slice(0, 10);
+      document.getElementById('groupOrder').value = 'No';
+      document.getElementById('orderType').value = '';
+      document.getElementById('memorialDateFormat').value = 'M/D/YY';
+      document.getElementById('imageSource').value = 'Upload';
+      document.getElementById('taxRate').value = '0';
+      document.getElementById('paymentType').value = '';
+      document.getElementById('retainerPaid').value = '0';
+      document.getElementById('confirmIntake').checked = false;
+
+      showTypeFields();
+      toggleGroupOrderReminder();
+      showCustomDateLabels();
+      updateMemorialDateLabels();
+
+      addItem();
+      updatePrintHeader();
+      clearStatus(errorBox);
+      clearStatus(copyStatus);
+      renderPreview();
+    }
+
+    function goToPage(fileName) {
+      window.location.href = fileName;
+    }
+
+    function downloadJson() {
+      clearStatus(copyStatus);
+      const { intake, errors } = renderPreview();
+      if (errors.length) return;
+
+      const namePart = (intake.client.name || 'client').replace(/[^a-z0-9]+/gi, '_');
+      const orderPart = (intake.orderId || intake.order.orderType || 'intake').replace(/[^a-z0-9]+/gi, '_');
+      const fileName = `${namePart}_${orderPart}_intake.json`;
+
+      const blob = new Blob([JSON.stringify(intake, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function legacyCopyText(text) {
+      const helper = document.createElement('textarea');
+      helper.value = text;
+      helper.setAttribute('readonly', 'readonly');
+      helper.style.position = 'fixed';
+      helper.style.top = '-9999px';
+      helper.style.left = '-9999px';
+      document.body.appendChild(helper);
+      helper.focus();
+      helper.select();
+      helper.setSelectionRange(0, helper.value.length);
+
+      let success = false;
+      try {
+        success = document.execCommand('copy');
+      } catch (err) {
+        success = false;
+      }
+
+      document.body.removeChild(helper);
+      return success;
+    }
+
+    async function copyJson() {
+      const { intake, errors } = renderPreview();
+      if (errors.length) {
+        clearStatus(copyStatus);
+        return;
+      }
+
+      const text = JSON.stringify(intake, null, 2);
+      clearStatus(copyStatus);
+
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        try {
+          await navigator.clipboard.writeText(text);
+          setStatus(copyStatus, 'success', 'JSON copied to clipboard.');
+          return;
+        } catch (err) {}
+      }
+
+      const copied = legacyCopyText(text);
+      if (copied) {
+        setStatus(copyStatus, 'success', 'JSON copied using fallback copy mode.');
+        return;
+      }
+
+      setStatus(copyStatus, 'warning', 'Copy was blocked in this environment. Use Preview, then manually select and copy the JSON below.');
+    }
+
+    document.getElementById('btnNavMainForm').addEventListener('click', () => goToPage('index.html'));
+    document.getElementById('btnNavGroupParticipant').addEventListener('click', () => goToPage('g2g-group-participant.html'));
+    document.getElementById('btnNavGroupDashboard').addEventListener('click', () => goToPage('g2g-group-dashboard.html'));
+    document.getElementById('btnOpenGroupParticipant').addEventListener('click', () => goToPage('g2g-group-participant.html'));
+    document.getElementById('btnOpenGroupDashboard').addEventListener('click', () => goToPage('g2g-group-dashboard.html'));
+
+    orderType.addEventListener('change', showTypeFields);
+    groupOrderSelect.addEventListener('change', toggleGroupOrderReminder);
+    dateLabelStyle.addEventListener('change', () => {
+      showCustomDateLabels();
+      updateMemorialDateLabels();
+    });
+
+    document.getElementById('customLabel1').addEventListener('input', updateMemorialDateLabels);
+    document.getElementById('customLabel2').addEventListener('input', updateMemorialDateLabels);
+
+    bindQuotePreset('memorialQuotePreset', 'memorialQuote', 'Memorial');
+    bindQuotePreset('birthdayQuotePreset', 'birthdayWording', 'Birthday');
+    bindQuotePreset('gradQuotePreset', 'gradWordingQuote', 'Graduation');
+    bindQuotePreset('otherQuotePreset', 'otherWordingQuote', 'Other');
+
+    document.getElementById('ageTurning').addEventListener('input', () => {
+      refreshAutoQuote('birthdayQuotePreset', 'birthdayWording', 'Birthday');
+      renderPreview();
+      updatePrintHeader();
+    });
+
+    ['graduateFirstName', 'graduateLastName', 'classYear'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        refreshAutoQuote('gradQuotePreset', 'gradWordingQuote', 'Graduation');
+        renderPreview();
+        updatePrintHeader();
+      });
+    });
+
+    document.getElementById('btnAddItem').addEventListener('click', addItem);
+    document.getElementById('btnNewOrderTop').addEventListener('click', resetFormForNewOrder);
+    document.getElementById('btnNewOrder').addEventListener('click', resetFormForNewOrder);
+
+    document.getElementById('btnLoadTop').addEventListener('click', () => {
+      jsonFileInput.click();
+    });
+
+    document.getElementById('btnLoad').addEventListener('click', () => {
+      jsonFileInput.click();
+    });
+
+    jsonFileInput.addEventListener('change', async (event) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+
+      await loadIntakeJsonFile(file);
+      jsonFileInput.value = '';
+    });
+
+    document.getElementById('btnPreview').addEventListener('click', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+    });
+    document.getElementById('btnDownload').addEventListener('click', downloadJson);
+    document.getElementById('btnCopy').addEventListener('click', copyJson);
+    document.getElementById('btnPrint').addEventListener('click', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+      updatePrintHeader();
+      window.print();
+    });
+
+    document.getElementById('btnPreviewTop').addEventListener('click', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+    });
+    document.getElementById('btnDownloadTop').addEventListener('click', downloadJson);
+    document.getElementById('btnCopyTop').addEventListener('click', copyJson);
+    document.getElementById('btnPrintTop').addEventListener('click', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+      updatePrintHeader();
+      window.print();
+    });
+
+    document.getElementById('intakeForm').addEventListener('input', () => {
+      clearStatus(copyStatus);
+      renderPreview();
+      updatePrintHeader();
+    });
+
+    document.getElementById('invoiceDate').value = new Date().toISOString().slice(0, 10);
+
+    showTypeFields();
+    showCustomDateLabels();
+    updateMemorialDateLabels();
+    updatePrintHeader();
+    toggleGroupOrderReminder();
+    matchPresetToTextarea('memorialQuotePreset', 'memorialQuote', 'Memorial');
+    matchPresetToTextarea('birthdayQuotePreset', 'birthdayWording', 'Birthday');
+    matchPresetToTextarea('gradQuotePreset', 'gradWordingQuote', 'Graduation');
+    matchPresetToTextarea('otherQuotePreset', 'otherWordingQuote', 'Other');
+    addItem();
+    renderPreview();
+  </script>
+</body>
+</html>    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .g2g-header {
+      background: linear-gradient(135deg, #111827 25%, #7c3aed 75%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+      border: 1px solid #374151;
+    }
+
+    .g2g-brand {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .g2g-tagline {
+      font-size: 14px;
+      color: #d1d5db;
+      margin-bottom: 10px;
+    }
+
+    .g2g-form-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .sticky-actions {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: var(--bg);
+      padding: 12px 0;
+      margin-bottom: 18px;
+    }
+
+    .sticky-actions .card {
+      margin-bottom: 0;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin: 0 0 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 14px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .print-only {
+      display: none;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .secondary {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      box-shadow: inset 0 0 0 1px #d8b4fe;
+    }
+
+    .secondary:hover {
+      background: #e9d5ff;
+    }
+
+    .ghost {
+      background: var(--accent-soft-2);
+      color: var(--accent-dark);
+      box-shadow: inset 0 0 0 1px #ddd6fe;
+    }
+
+    .ghost:hover {
+      background: #ede9fe;
+    }
+
+    .danger {
+      background: #fee4e2;
+      color: #b42318;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: pre-line;
+    }
+
+    .status.error { color: var(--danger); }
+    .status.success { color: var(--success); }
+    .status.warning { color: var(--warning); }
+
+    pre {
+      margin: 0;
+      border-radius: 12px;
+      padding: 14px;
+      background: #111827;
+      color: #f3f4f6;
+      overflow: auto;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .items-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .item-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+      background: #fcfcfd;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .item-title {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .item-print-meta {
+      display: none;
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+
+    .item-print-meta strong {
+      font-weight: 700;
+    }
+
+    .invoice-payment-print-line {
+      display: none;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      margin-top: 10px;
+      table-layout: fixed;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f9fafb;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+      color: var(--muted);
+    }
+
+    th:nth-child(1),
+td:nth-child(1) {
+  width: 30%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 12%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 20%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 20%;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  width: 18%;
+}
+
+    td input,
+    td select {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .sizeDropdown,
+    .sizeName {
+      min-width: 160px;
+      font-size: 16px;
+    }
+
+    .row-total {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .totals-box {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .totals-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .totals-row:last-child {
+      border-bottom: 0;
+    }
+
+    .totals-row strong {
+      font-size: 16px;
+    }
+
+    .confirm-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .confirm-label input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+    }
+
+    .invoice-print-header {
+      display: none;
+    }
+
+    .invoice-header-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .invoice-brand {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .invoice-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .invoice-meta {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .invoice-signoff {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .sign-row {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .grid, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        padding: 14px;
+      }
+
+      .g2g-header {
+        padding: 18px 16px;
+      }
+
+      .g2g-brand {
+        font-size: 24px;
+      }
+
+      .g2g-form-title {
+        font-size: 16px;
+      }
+
+      .sizeDropdown,
+      .sizeName {
+        min-width: 100%;
+      }
+    }
+
+    @media print {
+      @page {
+        size: Letter portrait;
+        margin: 0.35in;
+      }
+
+      html,
+      body {
+        width: auto;
+        height: auto;
+      }
+
+      body {
+        background: #fff;
+        padding: 0;
+        font-size: 10.5px;
+        line-height: 1.2;
+        color: #000;
+      }
+
+      .wrap {
+        max-width: none;
+      }
+
+      #jobPrintSection,
+      #invoicePrintSection,
+      #jobPrintSection *,
+      #invoicePrintSection * {
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+        text-shadow: none !important;
+        box-shadow: none !important;
+      }
+
+      .no-print,
+      #jsonPreviewCard,
+      .sticky-actions,
+      #errorBox,
+      #copyStatus,
+      form > .card:last-of-type,
+      .btnRemoveItem {
+        display: none !important;
+      }
+
+      .g2g-header {
+        margin-bottom: 6px;
+        padding: 8px 10px;
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        border-radius: 0;
+      }
+
+      .g2g-brand {
+        font-size: 20px;
+        margin-bottom: 2px;
+      }
+
+      .g2g-tagline,
+      .g2g-form-title {
+        color: #000 !important;
+      }
+
+      .g2g-tagline {
+        font-size: 10px;
+        margin-bottom: 3px;
+      }
+
+      .g2g-form-title {
+        font-size: 12px;
+      }
+
+      .card {
+        border: 0 !important;
+        page-break-inside: auto;
+        break-inside: auto;
+        margin-bottom: 6px;
+        padding: 8px 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .section-title {
+        font-size: 13px;
+        margin: 0 0 6px;
+      }
+
+      .grid,
+      .grid-1,
+      .grid-3,
+      .grid-4 {
+        gap: 8px;
+      }
+
+      #jobPrintSection > .card:first-child .grid,
+      #jobPrintSection > .card:nth-child(2) .grid,
+      #memorialFields .grid,
+      #birthdayFields .grid,
+      #graduationFields .grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .field {
+        gap: 2px;
+      }
+
+      label {
+        font-size: 10px;
+      }
+
+      .hint,
+      .invoice-sub,
+      .invoice-meta,
+      th {
+        font-size: 9px;
+        color: #000 !important;
+      }
+
+      input,
+      select,
+      textarea {
+        color: #000 !important;
+        box-shadow: none !important;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+
+      input,
+      select {
+        min-height: auto;
+        height: auto;
+        border: 0 !important;
+        border-bottom: 0 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        padding: 0 !important;
+      }
+#invoicePrintSection th:nth-child(1),
+#invoicePrintSection td:nth-child(1) {
+  width: 30%;
+}
+
+#invoicePrintSection th:nth-child(2),
+#invoicePrintSection td:nth-child(2) {
+  width: 12%;
+}
+
+#invoicePrintSection th:nth-child(3),
+#invoicePrintSection td:nth-child(3) {
+  width: 20%;
+}
+
+#invoicePrintSection th:nth-child(4),
+#invoicePrintSection td:nth-child(4) {
+  width: 20%;
+}
+      textarea {
+        min-height: auto !important;
+        height: auto;
+        border: 0 !important;
+        border-bottom: 0 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        padding: 0 !important;
+        resize: none;
+        overflow: hidden;
+      }
+
+      #designDirectionNotes,
+      #memorialQuote,
+      #memorialPhotoNotes,
+      #birthdayWording,
+      #birthdayPhotoNotes,
+      #gradWordingQuote,
+      #gradPhotoNotes,
+      #referenceNotes {
+        min-height: auto !important;
+        height: auto !important;
+      }
+
+      .confirm-label {
+        gap: 6px;
+        align-items: center;
+      }
+
+      .confirm-label input[type="checkbox"] {
+        width: 12px !important;
+        height: 12px !important;
+        min-height: 12px !important;
+        margin-top: 0;
+        padding: 0 !important;
+        border: 1px solid #000 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        appearance: auto !important;
+        -webkit-appearance: checkbox !important;
+        accent-color: #000 !important;
+        display: inline-block !important;
+      }
+
+      .print-only {
+        display: block !important;
+      }
+
+      #invoicePrintSection {
+        page-break-before: always;
+        break-before: page;
+        margin-top: 0;
+      }
+
+      .invoice-print-header {
+        display: block !important;
+      }
+
+      .invoice-header-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .invoice-brand {
+        font-size: 18px;
+      }
+
+      #invoicePrintSection,
+      #invoicePrintSection * {
+        font-size: 11px !important;
+        line-height: 1.25 !important;
+      }
+
+      #invoicePrintSection .invoice-brand {
+        font-size: 18px !important;
+        font-weight: 800 !important;
+      }
+
+      .items-head {
+        margin-bottom: 8px;
+      }
+
+      .item-card {
+        padding: 10px 0;
+        margin-bottom: 8px;
+        border-radius: 0;
+        overflow: visible !important;
+        border: 0 !important;
+      }
+
+      .item-top {
+        margin-bottom: 3px;
+      }
+
+      .item-card > .grid-4 {
+        display: none !important;
+      }
+
+      .item-print-meta {
+  display: block !important;
+  margin: 0 0 6px;
+  font-size: 14px !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+}
+
+      #invoicePrintSection > .card > .grid-3 {
+        display: none !important;
+      }
+
+      .invoice-payment-print-line {
+        display: block !important;
+        margin-top: 8px;
+        font-size: 11px !important;
+        line-height: 1.25 !important;
+      }
+
+      table {
+        width: 100%;
+        min-width: 0 !important;
+        table-layout: fixed;
+        margin-top: 6px;
+      }
+
+      th,
+      td {
+        font-size: 10px;
+        padding: 4px 5px;
+        border-color: #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+      }
+
+      th {
+        text-transform: uppercase;
+        background: #fff !important;
+        color: #000 !important;
+      }
+
+      td input,
+      td select {
+        min-height: auto;
+        height: auto;
+        padding: 0 !important;
+        border: 0 !important;
+        border-bottom: 0 !important;
+        background: transparent !important;
+      }
+
+      .sizeDropdown,
+      .sizeName {
+        min-width: 0;
+        font-size: 10px;
+      }
+
+      .totals-box {
+        margin-top: 8px;
+        border-radius: 0;
+        border: 0 !important;
+      }
+
+      .totals-row {
+        padding: 5px 7px;
+        font-size: 10px;
+        background: #fff !important;
+        border: 0 !important;
+      }
+
+      .totals-row:first-child {
+        border: 0 !important;
+      }
+
+      .totals-row strong {
+        font-size: 11px !important;
+      }
+
+      .invoice-signoff {
+        margin-top: 10px;
+        padding-top: 8px;
+        border-top: 0 !important;
+      }
+
+      .sign-row {
+        margin-top: 8px;
+        font-size: 11px;
+      }
+
+      .field input,
+      .field select,
+      .field textarea,
+      .sizesBody input,
+      .sizesBody select {
+        outline: 0 !important;
+        box-shadow: none !important;
+        text-decoration: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="g2g-header">
+      <div class="g2g-brand">G2G Print Shop</div>
+      <div class="g2g-tagline">Custom Apparel &amp; Printing</div>
+      <div class="g2g-form-title">Customer Order Form</div>
+    </div>
+    
+<div class="card no-print">
+  <h2 class="section-title">Forms Navigation</h2>
+  <div class="actions">
+    <button type="button" class="secondary" id="btnNavMainForm">Main Order Form</button>
+    <button type="button" class="secondary" id="btnNavGroupParticipant">Group Participant Form</button>
+    <button type="button" class="secondary" id="btnNavGroupDashboard">Group Dashboard</button>
+  </div>
+</div>
+    <div class="sticky-actions no-print">
+      <div class="card">
+        <h2 class="section-title">Quick Actions</h2>
+        <div class="actions">
+          <button type="button" class="primary" id="btnDownloadTop">Download intake.json</button>
+          <button type="button" class="secondary" id="btnNewOrderTop">New Order</button>
+          <button type="button" class="secondary" id="btnLoadTop">Load intake.json</button>
+          <button type="button" class="secondary" id="btnPreviewTop">Preview JSON</button>
+          <button type="button" class="secondary" id="btnCopyTop">Copy JSON</button>
+          <button type="button" class="secondary" id="btnPrintTop">Print Invoice</button>
+        </div>
+      </div>
+    </div>
+
+    <form id="intakeForm">
+      <div id="jobPrintSection">
+        <div class="card">
+          <h2 class="section-title">Client Information</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="clientName">Client Name</label>
+              <input id="clientName" name="clientName" required />
+            </div>
+            <div class="field">
+              <label for="orderId">Order ID</label>
+              <input id="orderId" name="orderId" placeholder="Example: G2G-1001" />
+            </div>
+            <div class="field">
+              <label for="designCode">Design Code</label>
+              <input id="designCode" name="designCode" placeholder="Example: BK-GRAD-01" />
+            </div>
+            <div class="field">
+              <label for="clientPhone">Phone</label>
+              <input id="clientPhone" name="clientPhone" />
+            </div>
+            <div class="field">
+              <label for="clientEmail">Email</label>
+              <input id="clientEmail" name="clientEmail" type="email" />
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Order Information</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="orderType">Order Type</label>
+              <select id="orderType" name="orderType" required>
+                <option value="">Select one</option>
+                <option value="Memorial">Memorial</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Graduation">Graduation</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="dueDate">Due Date</label>
+              <input id="dueDate" name="dueDate" type="date" required />
+            </div>
+            <div class="field">
+              <label for="groupOrder">Is this a Group Order?</label>
+              <select id="groupOrder" name="groupOrder">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+            <div class="field hidden" id="groupDesignNameWrap">
+  <label for="groupDesignName">Group/Design Name</label>
+  <input
+    id="groupDesignName"
+    name="groupDesignName"
+    placeholder="Example: Johnson Family Reunion Shirts"
+  />
+</div>
+            <div class="field">
+              <label for="invoiceDate">Invoice Date</label>
+              <input id="invoiceDate" name="invoiceDate" type="date" />
+            </div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="designDirectionNotes">Design Direction Notes</label>
+              <textarea id="designDirectionNotes" name="designDirectionNotes" required placeholder="Colors, style, mood, wording direction, layout ideas, must-have details..."></textarea>
+            </div>
+          </div>
+        </div>
+<div class="card hidden no-print" id="groupOrderReminderCard">
+  <h2 class="section-title">Group Order Reminder</h2>
+  <div class="hint" style="font-size:14px; line-height:1.6; color:var(--text);">
+    This order is marked as a <strong>Group Order</strong>.<br><br>
+    Use the tools below for additional walk-in customers under the same job:
+  </div>
+
+  <div class="actions" style="margin-top:14px;">
+    <button type="button" class="secondary" id="btnOpenGroupParticipant">Open Group Participant Form</button>
+    <button type="button" class="secondary" id="btnOpenGroupDashboard">Open Group Dashboard</button>
+  </div>
+
+  <div class="hint" style="margin-top:14px;">
+    Use the same <strong>Order ID</strong> for all participant orders and in the dashboard.
+  </div>
+</div>
+        <div class="card hidden" id="memorialFields">
+          <h2 class="section-title">Memorial Details</h2>
+          <div class="grid">
+            <div class="field">
+              <label for="deceasedFirstName">Deceased First Name</label>
+              <input id="deceasedFirstName" name="deceasedFirstName" />
+            </div>
+            <div class="field">
+              <label for="deceasedLastName">Deceased Last Name</label>
+              <input id="deceasedLastName" name="deceasedLastName" />
+            </div>
+            <div class="field">
+              <label for="dateLabelStyle">Date Label Style</label>
+              <select id="dateLabelStyle" name="dateLabelStyle">
+                <option value="DOB_DOD">Date of Birth / Date of Death</option>
+                <option value="SUNRISE_SUNSET">Sunrise / Sunset</option>
+                <option value="ALPHA_OMEGA">Alpha / Omega</option>
+                <option value="CUSTOM">Custom Labels</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="memorialDateFormat">Memorial Date Format</label>
+              <select id="memorialDateFormat" name="memorialDateFormat">
+                <option value="M/D/YY">4/1/26</option>
+                <option value="M/D/YYYY">4/1/2026</option>
+                <option value="M-D-YY">4-1-26</option>
+                <option value="M-D-YYYY">4-1-2026</option>
+                <option value="MONTH_D_COMMA_YYYY">April 1, 2026</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sunriseDate" id="dateFieldLabel1">Date of Birth</label>
+              <input id="sunriseDate" name="sunriseDate" type="date" />
+            </div>
+            <div class="field">
+              <label for="sunsetDate" id="dateFieldLabel2">Date of Death</label>
+              <input id="sunsetDate" name="sunsetDate" type="date" />
+            </div>
+          </div>
+
+          <div class="grid hidden" id="customDateLabelsWrap" style="margin-top: 14px;">
+            <div class="field">
+              <label for="customLabel1">Custom Label 1</label>
+              <input id="customLabel1" name="customLabel1" placeholder="Example: Born" />
+            </div>
+            <div class="field">
+              <label for="customLabel2">Custom Label 2</label>
+              <input id="customLabel2" name="customLabel2" placeholder="Example: Entered Rest" />
+            </div>
+          </div>
+
+          <div class="grid-1" style="margin-top: 14px;">
+            <div class="field">
+              <label for="memorialThemeColors">Theme / Colors</label>
+              <input id="memorialThemeColors" name="memorialThemeColors" />
+            </div>
+            <div class="field">
               <label for="memorialQuote">Saying / Quote</label>
               <textarea id="memorialQuote" name="memorialQuote"></textarea>
             </div>
